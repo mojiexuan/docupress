@@ -1,0 +1,138 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--jxt-text-color-1);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  word-break: break-all;
+}
+
+img {
+  /* user-drag: none; */
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+p {
+  overflow-wrap: break-word;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+}
+
+button:enabled{
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  outline: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.mjx-header,
+.mjx-main,
+.mjx-footer {
+  min-width: 320px;
+}
+
+html[data-theme="Light"] {
+  --jxt-main-color: #f15a29;
+  --jxt-main-hover-color: #e23914;
+  --jxt-main-bg: #f15a29;
+  --jxt-box-shadow-card: 0 4px 30px 0 rgb(232 232 237 / 50%);
+  --jxt-border-card-color: rgba(60, 60, 60, 0.12);
+  --jxt-border-divider-color: #e2e2e3;
+  --jxt-bg-color-card: #ffffff;
+  --jxt-black-bg-white: #1b1b1f;
+  --jxt-footer-a-color: #3c3c3ccc;
+  --jxt-tagline-color: #67676c;
+  --jxt-button-alt-bg: #ebebef;
+  --jxt-button-hover-bg: #dbdbe2;
+  --jxt-feature-card-bg: #f6f6f7;
+  --jxt-feature-icon-card-bg: #e7e8ec;
+  --jxt-text-color-1: #3c3c43;
+  --jxt-text-color-2: #3c3c43c7;
+  --jxt-text-color-3: #3c3c438f;
+  --jxt-menu-bg: #ffffff;
+  --jxt-box-shadow-1: 0 12px 32px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  --jxt-black: #1b1b1f;
+  --jxt-white: #ffffff;
+  --jxt-code-bg:#8e96aa24;
+  --jxt-code-font-size:.875em;
+  --jxt-code-color:#f47643;
+  --jxt-custom-block-info-bg: #8e96aa24;
+  --jxt-custom-block-tip-bg: #ebfef7;
+  --jxt-custom-block-warning-bg: #eab30824;
+  --jxt-custom-block-danger-bg: #f43f5e24;
+  --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
+  --jxt-header-height: 64px;
+}
+
+html[data-theme="Dark"] {
+  --jxt-main-color: #f15a29;
+  --jxt-main-hover-color: #e23914;
+  --jxt-main-bg: #1b1b1f;
+  --jxt-box-shadow-card: 0 4px 30px 0 rgba(66, 66, 66, 0.5);
+  --jxt-border-card-color: rgba(61, 64, 69, 0.48);
+  --jxt-border-divider-color: #2e2e32;
+  --jxt-bg-color-card: #1b1b1f;
+  --jxt-black-bg-white: #ffffff;
+  --jxt-footer-a-color: #fafafacc;
+  --jxt-tagline-color: #98989f;
+  --jxt-button-alt-bg: #32363f;
+  --jxt-button-hover-bg: #414853;
+  --jxt-feature-card-bg: #202127;
+  --jxt-feature-icon-card-bg: #2b2f36;
+  --jxt-text-color-1: #fffff5db;
+  --jxt-text-color-2: #ebebf599;
+  --jxt-text-color-3: #ebebf561;
+  --jxt-menu-bg: #202127;
+  --jxt-box-shadow-1: 0 12px 32px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  --jxt-black: #1b1b1f;
+  --jxt-white: #ffffff;
+  --jxt-code-bg:#65758529;
+  --jxt-code-font-size:.875em;
+  --jxt-code-color:#f47643;
+  --jxt-custom-block-info-bg: #65758529;
+  --jxt-custom-block-tip-bg: #002f29;
+  --jxt-custom-block-warning-bg: #eab30829;;
+  --jxt-custom-block-danger-bg: #f43f5e29;
+  --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
+  --jxt-header-height: 64px;
+}
+
+/* ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */

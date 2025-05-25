@@ -1,0 +1,70 @@
+// 引入fastify框架
+import Fastify, { FastifyInstance } from "fastify";
+import { getConfig, loadConfig } from "./config";
+import { ConfigApp } from "./config/config";
+import logger from "./logger";
+import userRouter from "./routes/user.router";
+import path from "path";
+import nunjucks from "nunjucks";
+import fastifyView from "@fastify/view";
+import fastifyStatic from "@fastify/static";
+import errorHandlerPlugin from "./plugins/error-handler-plugin";
+
+// 创建Fastify实例
+const app: FastifyInstance = Fastify({
+  logger: false,
+});
+
+/**
+ * 初始化服务
+ */
+const initServer = () => {
+  // 加载配置文件
+  loadConfig();
+
+  // 注册自定义的错误处理插件
+  errorHandlerPlugin(app); // 新增注册插件
+
+  // 注册静态文件插件
+  app.register(fastifyStatic, {
+    root: path.join(__dirname, getConfig("app").public), // 静态文件目录
+    prefix: "/", // 访问前缀
+  });
+
+  // 注册模板引擎
+  app.register(fastifyView, {
+    engine: {
+      nunjucks: nunjucks,
+    },
+    templates: path.join(__dirname, "/views"),
+    viewExt: "njk", // 模板文件扩展名
+    options: {
+      autoescape: true, // 自动转义 HTML
+      noCache: true, // 开发环境禁用缓存
+    },
+  });
+
+  app.register(userRouter, { prefix: "/" });
+};
+
+// 运行服务
+const startServer = async () => {
+  try {
+    initServer();
+
+    const APP_INFO = getConfig("app") as ConfigApp;
+
+    await app.listen({
+      port: APP_INFO.port,
+      host: APP_INFO.host,
+    });
+    logger.info(
+      `${APP_INFO.name} 服务启动成功，服务监听：http://127.0.0.1:${APP_INFO.port}`
+    );
+  } catch (err) {
+    app.log.error(err);
+    process.exit(1);
+  }
+};
+
+export default startServer;

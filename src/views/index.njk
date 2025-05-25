@@ -1,0 +1,58 @@
+{% extends "layouts/base.njk" %}
+
+{# css链接 #}
+{% block head %}
+  <style>{% include "css/index.css" ignore missing %}</style>
+  <style media="screen and (min-width: 640px)">{% include "css/640/index.css" ignore missing %}</style>
+  <style media="screen and (min-width: 960px)">{% include "css/960/index.css" ignore missing %}</style>
+{% endblock %}
+
+{# 内容区 #}
+{% block content %}
+  <div class="index-main">
+    <div class="index-container">
+      <div class="index-container-main">
+          <h1 class="index-heading">
+            <span class="index-heading-title">{{ title }}</span>
+            <span>{{ description }}</span>
+          </h1>
+          <p class="index-tagline">{{tagline}}</p>
+          <div class="index-actions-container">
+            {% for item in actions %}
+              <div class="index-actions-container-action">
+                <a class="index-actions-container-action-link" href="{{ item.link }}" {% if item.blank %} target="_blank" {% endif %}>{{ item.name }}</a>
+              </div>
+            {% endfor %}
+          </div>
+      </div>
+      <div class="index-container-img-container">
+        <img class="index-container-img-container-image" src="{{favicon}}" alt="">
+      </div>
+    </div>
+    <div class="index-features-container">
+      {% for item in features %}
+      <div class="index-features-container-item-container"> 
+        <article class="index-features-container-item">
+          {% if item.icon %}
+          <div class="index-features-container-item-icon">{{item.icon}}</div>
+          {% endif %}
+          <h2 class="index-features-container-item-name">{{item.name}}</h2>
+          <p class="index-features-container-item-details">{{item.details}}</p>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{# 尾巴 #}
+{% block footer %}
+    {% for item in footer %}
+       <a {% if item.link %} href="{{item.link}}" target="_blank" {% endif %}>
+          {% if item.icon %}
+            <img src="{{item.icon}}" alt="{{item.name}}" width="14px" height="14px">
+          {% endif %}
+          {{item.name}}
+        </a>
+    {% endfor %}
+{% endblock %}

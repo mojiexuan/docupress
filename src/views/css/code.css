@@ -1,0 +1,59 @@
+.hljs-keyword{
+    color: #569CD6;
+}
+
+.hljs-title{
+    color: #3BC1FF;
+}
+
+.function_{
+    color: #DCB862;
+}
+
+.hljs-variable{
+    color: #9CDCF0;
+}
+
+.constant_{
+    color: #4FC1FF;
+}
+
+.hljs-params{
+    color: #4EC9B0;
+}
+
+.hljs-property,.hljs-attr{
+    color: #9CDCFE;
+}
+
+.hljs-literal{
+    color: #569CCA;
+}
+
+.hljs-string{
+    color: var(--jxt-code-color);
+}
+
+.hljs-meta{
+    color: #B3AE60;
+}
+
+.hljs-built_in{
+    color: #2667CA;
+}
+
+.hljs-type{
+    color: #43C9B0;
+}
+
+.hljs-tag{
+    color: #569CCA;
+}
+
+.hljs-comment{
+    color: #529155;
+}
+
+.hljs-number{
+    color: #B5CEA8;
+}

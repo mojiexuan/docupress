@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="Light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="{{description}}"/>
+  <meta name="keywords" content="{{keywords}}"/>
+  <meta name="author" content="{{author}}" />
+  <meta name="revised" content="{{time}}" />
+  <meta name="application-name" content="{{ title }}" />
+  <title>{{title}}</title>
+  <link rel="shortcut icon" href="{{ favicon }}">
+  <style>{% include "css/base.css" ignore missing %}</style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="mjx-header">
+    <div class="mjx-header-left">
+      <img src="{{ favicon }}" alt="logo" width="27" height="27">
+      <span>{{ name }}</span>
+    </div>
+    <div class="mjx-header-right">
+      <span class="mjx-header-operate-container">
+        {% for item in operates %}
+          <a class="mjx-header-operate" {% if item.link %} href="{{item.link}}" {% endif %} {% if item.blank %} target="_blank" {% endif %}>
+            {% if item.name === "lang" %}
+              {% include "layouts/lang.njk" ignore missing %}
+            {% elif item.name === "theme" %}
+              {% include "layouts/theme.njk" ignore missing %}
+            {% elif item.name === "github" %}
+              {% include "layouts/github.njk" ignore missing %}
+            {% else %}
+              {{item.name}}
+            {% endif %}
+          </a>
+        {% endfor %}
+      </span>
+      <div class="mjx-header-operate mjx-header-operate-more">
+        {% include "layouts/more.njk" ignore missing %}
+      </div>
+    </div>
+  </header>
+  <main class="mjx-main">
+    {% block content %}{% endblock %}
+  </main>
+  {% if footer %}
+    <footer class="mjx-footer">
+      {% block footer %}{% endblock %}
+    </footer>
+  {% endif %}
+</body>
+</html>

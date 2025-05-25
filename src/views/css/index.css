@@ -1,0 +1,203 @@
+.mjx-header {
+  width: 100vw;
+  height: var(--jxt-header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--jxt-border-card-color);
+  background-color: var(--jxt-bg-color-card);
+  padding: 0 25px;
+  justify-content: space-between;
+}
+
+.mjx-footer {
+  height: auto;
+  width: 100vw;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--jxt-bg-color-card);
+  padding: 10px 25px;
+}
+
+.mjx-footer a {
+  color: var(--jxt-footer-a-color);
+  font-size: 14px;
+}
+
+.mjx-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--jxt-main-color);
+}
+
+.mjx-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.mjx-header-operate-container {
+  display: none;
+}
+
+.mjx-header-operate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: var(--jxt-header-height);
+  height: var(--jxt-header-height);
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--jxt-text-color-1);
+  cursor: pointer;
+}
+
+.mjx-header-operate-more {
+  display: flex;
+  position: relative;
+}
+
+.index-main {
+  width: 100vw;
+  padding: 144px 25px 44px 25px;
+  background-color: var(--jxt-bg-color-card);
+}
+
+.index-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.index-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 56px;
+  line-height: var(--jxt-header-height);
+  color: var(--jxt-black-bg-white);
+}
+
+.index-heading-title {
+  width: max-content;
+  background: linear-gradient(120deg, var(--jxt-white), var(--jxt-main-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.index-tagline {
+  font-size: 24px;
+  line-height: 36px;
+  color: var(--jxt-tagline-color);
+  padding-top: 12px;
+  text-align: center;
+}
+
+.index-container-main {
+  width: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.index-actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -6px;
+  padding-top: 24px;
+  justify-content: center;
+}
+
+.index-actions-container-action {
+  flex-shrink: 0;
+  padding: 6px;
+}
+
+.index-actions-container-action-link {
+  display: inline-block;
+  background-color: var(--jxt-button-alt-bg);
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--jxt-black-bg-white);
+}
+
+.index-actions-container-action-link:hover {
+  background-color: var(--jxt-button-hover-bg);
+}
+
+.index-actions-container-action:first-child
+  .index-actions-container-action-link {
+  background-color: var(--jxt-main-color);
+  color: var(--jxt-white);
+}
+
+.index-actions-container-action:first-child
+  .index-actions-container-action-link:hover {
+  background-color: var(--jxt-main-hover-color);
+}
+
+.index-features-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+  padding-top: 64px;
+}
+
+.index-features-container-item-container {
+  padding: 8px;
+  width: 100%;
+}
+
+.index-features-container-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: var(--jxt-feature-card-bg);
+}
+
+.index-features-container-item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background-color: var(--jxt-feature-icon-card-bg);
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+}
+
+.index-features-container-item-name {
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--jxt-black-bg-white);
+}
+
+.index-features-container-item-details {
+  flex-grow: 1;
+  padding-top: 8px;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--jxt-tagline-color);
+}
