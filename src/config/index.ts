@@ -2,7 +2,6 @@
 import { readFileSync } from "fs";
 import path from "path";
 import { parse } from "yaml";
-import { Config } from "./config";
 import logger from "../logger";
 import { getNowDate } from "../utils";
 

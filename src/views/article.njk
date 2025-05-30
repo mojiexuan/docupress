@@ -1,0 +1,12 @@
+{% extends "layouts/base.njk" %}
+
+{# css链接 #}
+{% block head %}
+  <style>{% include "css/index.css" ignore missing %}</style>
+  <style media="screen and (min-width: 640px)">{% include "css/640/index.css" ignore missing %}</style>
+  <style media="screen and (min-width: 960px)">{% include "css/960/index.css" ignore missing %}</style>
+{% endblock %}
+
+{# 内容区 #}
+{% block content %}
+{% endblock %}

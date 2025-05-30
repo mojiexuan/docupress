@@ -1,7 +1,6 @@
 // 引入fastify框架
 import Fastify, { FastifyInstance } from "fastify";
 import { getConfig, loadConfig } from "./config";
-import { ConfigApp } from "./config/config";
 import logger from "./logger";
 import userRouter from "./routes/user.router";
 import path from "path";
@@ -22,8 +21,7 @@ const initServer = () => {
   // 加载配置文件
   loadConfig();
 
-  // 注册自定义的错误处理插件
-  errorHandlerPlugin(app); // 新增注册插件
+  app.register(errorHandlerPlugin);
 
   // 注册静态文件插件
   app.register(fastifyStatic, {

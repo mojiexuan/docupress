@@ -2,7 +2,6 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { getConfig } from "../config";
-import { ConfigApp, ConfigOutline } from "../config/config";
 import markdownit from "markdown-it";
 import markdownitsub from "markdown-it-sub";
 import markdownitsup from "markdown-it-sup";
