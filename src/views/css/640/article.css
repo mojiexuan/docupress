@@ -12,57 +12,6 @@
   display: none;
 }
 
-.article-aside {
-  display: flex;
-  height: 100vh;
-  min-width: 258px;
-  padding: var(--jxt-header-height) 25px 0 50px;
-  background-color: var(--jxt-feature-card-bg);
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.article-aside-nav {
-  width: 208px;
-}
-
-.article-main-content {
-  height: 100vh;
-  flex: 1;
-  padding: calc(var(--jxt-header-height)) 0 0 0;
-}
-
-.sidebar-nav {
-  padding-top: 10px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--jxt-border-card-color);
-  width: 208px;
-}
-
-.sidebar-nav-title-text {
-  color: var(--jxt-text-color-1);
-  font-weight: 700;
-  flex-grow: 1;
-  padding: 4px 0;
-  line-height: 24px;
-  font-size: 14px;
-  transition: color 0.25s;
-}
-
-.sidebar-nav-list {
-  list-style-type: none;
-}
-
-.sidebar-nav-item-text {
-  font-weight: 500;
-  color: var(--jxt-text-color-2);
-  flex-grow: 1;
-  padding: 4px 0;
-  line-height: 24px;
-  font-size: 14px;
-  transition: color 0.25s;
-}
-
 .header-anchor {
   position: relative;
 }
@@ -73,10 +22,6 @@
   position: absolute;
   left: -25px;
   color: var(--jxt-main-color);
-}
-
-.article-sidebar-container{
-  display: none;
 }
 
 .article-content h2:hover .header-anchor::before {
@@ -99,13 +44,6 @@
   opacity: 1;
 }
 
-.article-content-container {
-  display: flex;
-  align-items: flex-start;
-  --jxt-container-height: calc(100vh - var(--jxt-header-height));
-  height: var(--jxt-container-height);
-}
-
 .article-content {
   flex: 1;
   height: var(--jxt-container-height);
@@ -120,63 +58,4 @@
   line-height: 40px;
   font-size: 32px;
   padding-top: 48px;
-}
-
-.article-outline-content {
-  position: unset;
-  display: flex;
-  flex-direction: column;
-  order: 2;
-  max-width: 256px;
-  width: 224px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: var(--jxt-container-height);
-  scroll-behavior: smooth;
-}
-
-.article-outline-title {
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 600;
-  padding-left: 16px;
-  padding-top: 48px;
-}
-
-.article-outline-of-contents ol {
-  list-style-type: none;
-}
-
-.article-outline-of-contents {
-  position: relative;
-  border-left: 1px solid var(--jxt-border-divider-color);
-  padding-left: 16px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.article-outline-of-contents::before {
-  position: absolute;
-  content: "";
-  left: -1px;
-  top: 7px;
-  width: 2px;
-  border-radius: 2px;
-  height: 18px;
-  opacity: 1;
-  background-color: var(--jxt-main-color);
-  transition: top 0.25s cubic-bezier(0, 1, 0.5, 1), background-color 0.5s,
-    opacity 0.25s;
-}
-
-.article-outline-link {
-  display: block;
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--jxt-text-color-2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color 0.5s;
 }

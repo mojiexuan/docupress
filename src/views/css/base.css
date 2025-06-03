@@ -96,6 +96,9 @@ html[data-theme="Light"] {
   --jxt-custom-block-danger-bg: #f43f5e24;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
   --jxt-header-height: 64px;
+  --jxt-scrollbar-track-color: #FCFCFC;
+  --jxt-scrollbar-thumb-color: #8B8B8B;
+  --jxt-scrollbar-thumb-hover-color: #636363;
 }
 
 html[data-theme="Dark"] {
@@ -130,9 +133,22 @@ html[data-theme="Dark"] {
   --jxt-custom-block-danger-bg: #f43f5e29;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
   --jxt-header-height: 64px;
+  --jxt-scrollbar-track-color: #2C2C2C;
+  --jxt-scrollbar-thumb-color: #9F9F9F;
+  --jxt-scrollbar-thumb-hover-color: #D1D1D1;
 }
 
-/* ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-} */
+/* 滚动条轨道 */
+::-webkit-scrollbar-track{
+  background: var(--jxt-scrollbar-track-color);
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb{
+  background: var(--jxt-scrollbar-thumb-color);
+}
+
+/* 滚动条滑块 鼠标悬停 */
+::-webkit-scrollbar-thumb:hover{
+  background: var(--jxt-scrollbar-thumb-hover-color);
+}

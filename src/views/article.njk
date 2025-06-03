@@ -2,11 +2,32 @@
 
 {# css链接 #}
 {% block head %}
-  <style>{% include "css/index.css" ignore missing %}</style>
-  <style media="screen and (min-width: 640px)">{% include "css/640/index.css" ignore missing %}</style>
-  <style media="screen and (min-width: 960px)">{% include "css/960/index.css" ignore missing %}</style>
+  <style>{% include "css/article.css" ignore missing %}</style>
+  <style media="screen and (min-width: 640px)">{% include "css/640/article.css" ignore missing %}</style>
+  <style media="screen and (min-width: 960px)">{% include "css/960/article.css" ignore missing %}</style>
 {% endblock %}
 
 {# 内容区 #}
 {% block content %}
+<div class="article-container">
+  <aside class="article-container-aside">
+    <nav>
+      {% for item in sidebar %}
+        <section class="article-container-sidebar-section">
+          <h2 class="article-container-aside-nav-title-text">{{item.text}}</h2>
+          {% if item.items %}
+            <ul class="article-container-sidebar-nav-list">
+              {% for item2 in item.items %}
+                <li>
+                  <a class="article-container-sidebar-nav-item-text" {% if item2.link %} href="{{item2.link}}" {% endif %} >{{item2.text}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </section>
+      {% endfor %}
+    </nav>
+  </aside>
+  {{content | safe}}
+</div>
 {% endblock %}
