@@ -15,6 +15,15 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  scrollbar-color: var(--jxt-scrollbar-thumb-color)
+    var(--jxt-scrollbar-track-color);
+  scroll-behavior: smooth;
+  --jxt-scrollbar-track-color: #fcfcfc;
+  --jxt-scrollbar-thumb-color: #8b8b8b;
+  --jxt-scrollbar-thumb-hover-color: #636363;
+}
+
 a {
   text-decoration: none;
   word-break: break-all;
@@ -44,7 +53,7 @@ button {
   border: none;
 }
 
-button:enabled{
+button:enabled {
   cursor: pointer;
 }
 
@@ -87,17 +96,17 @@ html[data-theme="Light"] {
     0 2px 6px rgba(0, 0, 0, 0.08);
   --jxt-black: #1b1b1f;
   --jxt-white: #ffffff;
-  --jxt-code-bg:#8e96aa24;
-  --jxt-code-font-size:.875em;
-  --jxt-code-color:#f47643;
+  --jxt-code-bg: #8e96aa24;
+  --jxt-code-font-size: 0.875em;
+  --jxt-code-color: #f47643;
   --jxt-custom-block-info-bg: #8e96aa24;
   --jxt-custom-block-tip-bg: #ebfef7;
   --jxt-custom-block-warning-bg: #eab30824;
   --jxt-custom-block-danger-bg: #f43f5e24;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
   --jxt-header-height: 64px;
-  --jxt-scrollbar-track-color: #FCFCFC;
-  --jxt-scrollbar-thumb-color: #8B8B8B;
+  --jxt-scrollbar-track-color: #fcfcfc;
+  --jxt-scrollbar-thumb-color: #8b8b8b;
   --jxt-scrollbar-thumb-hover-color: #636363;
 }
 
@@ -124,31 +133,44 @@ html[data-theme="Dark"] {
     0 2px 6px rgba(0, 0, 0, 0.08);
   --jxt-black: #1b1b1f;
   --jxt-white: #ffffff;
-  --jxt-code-bg:#65758529;
-  --jxt-code-font-size:.875em;
-  --jxt-code-color:#f47643;
+  --jxt-code-bg: #65758529;
+  --jxt-code-font-size: 0.875em;
+  --jxt-code-color: #f47643;
   --jxt-custom-block-info-bg: #65758529;
   --jxt-custom-block-tip-bg: #002f29;
-  --jxt-custom-block-warning-bg: #eab30829;;
+  --jxt-custom-block-warning-bg: #eab30829;
   --jxt-custom-block-danger-bg: #f43f5e29;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
   --jxt-header-height: 64px;
-  --jxt-scrollbar-track-color: #2C2C2C;
-  --jxt-scrollbar-thumb-color: #9F9F9F;
-  --jxt-scrollbar-thumb-hover-color: #D1D1D1;
+  --jxt-scrollbar-track-color: #2c2c2c;
+  --jxt-scrollbar-thumb-color: #9f9f9f;
+  --jxt-scrollbar-thumb-hover-color: #d1d1d1;
+}
+
+html[data-theme="Dark"] .shiki-light {
+  display: none;
+}
+
+html[data-theme="Light"] .shiki-dark {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
 /* 滚动条轨道 */
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   background: var(--jxt-scrollbar-track-color);
 }
 
 /* 滚动条滑块 */
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background: var(--jxt-scrollbar-thumb-color);
 }
 
 /* 滚动条滑块 鼠标悬停 */
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb:hover {
   background: var(--jxt-scrollbar-thumb-hover-color);
 }

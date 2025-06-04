@@ -7,6 +7,8 @@ sidebar:
           link: "/what"
         - text: "快速开始"
           link: "/started"
+        - text: "记发布开源组件到Maven Central仓库"
+          link: "/publish-maven-central-repo"
     - text: "写作"
       items:
         - text: "Markdown扩展"

@@ -1,2 +1,2 @@
-export * from './home.controller';
-export * from './article.controller';
+export * from './home.controller.js';
+export * from './article.controller.js';

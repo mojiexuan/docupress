@@ -1,6 +1,6 @@
 /// <reference path="./types/global.d.ts" />
-import startServer from "./server";
-import logger from "./logger";
+import startServer from "./server.js";
+import logger from "./logger.js";
 
 async function initApplication() {
   try {

@@ -1,13 +1,17 @@
 // 引入fastify框架
 import Fastify, { FastifyInstance } from "fastify";
-import { getConfig, loadConfig } from "./config";
-import logger from "./logger";
-import userRouter from "./routes/user.router";
+import { getConfig, loadConfig } from "./config/index.js";
+import logger from "./logger.js";
+import userRouter from "./routes/user.router.js";
 import path from "path";
 import nunjucks from "nunjucks";
 import fastifyView from "@fastify/view";
 import fastifyStatic from "@fastify/static";
-import errorHandlerPlugin from "./plugins/error-handler-plugin";
+import errorHandlerPlugin from "./plugins/error-handler-plugin.js";
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // 创建Fastify实例
 const app: FastifyInstance = Fastify({
@@ -20,6 +24,8 @@ const app: FastifyInstance = Fastify({
 const initServer = () => {
   // 加载配置文件
   loadConfig();
+
+  logger.info("开始注册相关插件...");
 
   app.register(errorHandlerPlugin);
 
@@ -43,6 +49,8 @@ const initServer = () => {
   });
 
   app.register(userRouter, { prefix: "/" });
+
+  logger.info("插件注册成功");
 };
 
 // 运行服务
@@ -52,13 +60,18 @@ const startServer = async () => {
 
     const APP_INFO = getConfig("app") as ConfigApp;
 
-    await app.listen({
+    logger.info(`正在启动服务，端口: ${APP_INFO.port}...`);
+    const address = await app.listen({
       port: APP_INFO.port,
       host: APP_INFO.host,
     });
-    logger.info(
-      `${APP_INFO.name} 服务启动成功，服务监听：http://127.0.0.1:${APP_INFO.port}`
-    );
+    logger.info(`
+      =========================================
+      ${APP_INFO.name} 服务运行中!
+      访问地址: ${address}
+      =========================================
+    `);
+    return app;
   } catch (err) {
     app.log.error(err);
     process.exit(1);

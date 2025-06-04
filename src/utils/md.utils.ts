@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { getConfig } from "../config";
+import { getConfig } from "../config/index.js";
 import markdownit from "markdown-it";
 import markdownitsub from "markdown-it-sub";
 import markdownitsup from "markdown-it-sup";
@@ -15,8 +15,12 @@ import markdownitmark from "markdown-it-mark";
 import markdownitanchor from "markdown-it-anchor";
 import markdownittocdoneright from "markdown-it-toc-done-right";
 import markdownitattrs from "markdown-it-attrs";
-import hljs from "highlight.js";
-import { getPre } from "./";
+import Shiki from "markdown-it-shiki";
+import { getPre } from "./index.js";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
  * 添加自定义容器
@@ -30,7 +34,11 @@ const addCustomContainer = (
       render: function (tokens: MarkdownItContainerTokenType[], idx: number) {
         const m = tokens[idx].info.split(" ");
         if (tokens[idx].nesting === 1) {
-          return `<div class="custom-container custom-container-${item.name}"><div class="custom-container-title">${m.length > 2 ? md.utils.escapeHtml(m[2]) : item.title}</div>\n`;
+          return `<div class="custom-container custom-container-${
+            item.name
+          }"><div class="custom-container-title">${
+            m.length > 2 ? md.utils.escapeHtml(m[2]) : item.title
+          }</div>\n`;
         } else {
           return "</div>\n";
         }
@@ -48,17 +56,18 @@ const md = markdownit({
   typographer: true, // 优化排版，标点
   quotes: "“”‘’",
   highlight: function (str, lang): string {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return getPre(
-          lang,
-          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value
-        );
-      } catch (__) {}
-    }
-    return getPre(lang, md.utils.escapeHtml(str));
+    console.log(str);
+    // return getPre(lang, md.utils.escapeHtml(str));
+    return "";
   },
 })
+  .use(Shiki, {
+    theme: {
+      dark: "min-dark",
+      light: "min-light",
+    },
+    highlightLines: true
+  })
   .use(markdownitsub) // 下标
   .use(markdownitsup) // 上标
   .use(markdownitfootnote) // 脚注
@@ -106,7 +115,9 @@ md.use(markdownitcontainer, "details", {
   render: function (tokens: MarkdownItContainerTokenType[], idx: number) {
     const m = tokens[idx].info.split(" ");
     if (tokens[idx].nesting === 1) {
-      return `<details class="custom-container custom-container-details"><summary class="custom-container-title">${m.length > 2 ? md.utils.escapeHtml(m[2]) : '详情'}</summary>\n`;
+      return `<details class="custom-container custom-container-details"><summary class="custom-container-title">${
+        m.length > 2 ? md.utils.escapeHtml(m[2]) : "详情"
+      }</summary>\n`;
     } else {
       return "</details>\n";
     }

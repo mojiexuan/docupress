@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { getConfig } from "../config";
-import { parseMd, parseYaml } from "../utils/md.utils";
+import { getConfig } from "../config/index.js";
+import { parseMd, parseYaml } from "../utils/index.js";
 
 export const articleController = (req:FastifyRequest, reply:FastifyReply) => {
   const APP_INFO = getConfig("app") as ConfigApp;
@@ -11,6 +11,7 @@ export const articleController = (req:FastifyRequest, reply:FastifyReply) => {
     ...APP_INFO,
     ...data,
     content,
-    title: "文章-"+APP_INFO.name,
+    title: data?.title+APP_INFO.name,
+    url: '/'+article,
   });
 };

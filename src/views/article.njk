@@ -5,6 +5,8 @@
   <style>{% include "css/article.css" ignore missing %}</style>
   <style media="screen and (min-width: 640px)">{% include "css/640/article.css" ignore missing %}</style>
   <style media="screen and (min-width: 960px)">{% include "css/960/article.css" ignore missing %}</style>
+  <style media="screen and (min-width: 1200px)">{% include "css/1200/article.css" ignore missing %}</style>
+  <style>{% include "css/code.css" ignore missing %}</style>
 {% endblock %}
 
 {# 内容区 #}
@@ -19,7 +21,7 @@
             <ul class="article-container-sidebar-nav-list">
               {% for item2 in item.items %}
                 <li>
-                  <a class="article-container-sidebar-nav-item-text" {% if item2.link %} href="{{item2.link}}" {% endif %} >{{item2.text}}</a>
+                  <a class="article-container-sidebar-nav-item-text {% if item2.link === url %} article-container-sidebar-nav-item-text-active {% endif %}" {% if item2.link %} href="{{item2.link}}" {% endif %} >{{item2.text}}</a>
                 </li>
               {% endfor %}
             </ul>
@@ -28,6 +30,24 @@
       {% endfor %}
     </nav>
   </aside>
+  <menu class="article-container-menu">
+  </menu>
   {{content | safe}}
+  <footer class="article-container-footer">
+    <div class="article-container-footer-info">
+      <p></p>
+      <p class="article-container-footer-info-time">最后更新于: <time>2025/1/7 02:24</time></p>
+    </div>
+    <nav class="article-container-footer-nav">
+      <a class="article-container-footer-nav-item">
+        <span class="article-container-footer-nav-item-text">上一页</span>
+        <span class="article-container-footer-nav-item-title">123456789</span>
+      </a>
+      <a class="article-container-footer-nav-item article-container-footer-nav-item-next">
+        <span class="article-container-footer-nav-item-text">下一页</span>
+        <span class="article-container-footer-nav-item-title">123456789</span>
+      </a>
+    </nav>
+  </footer>
 </div>
 {% endblock %}

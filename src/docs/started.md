@@ -7,6 +7,8 @@ sidebar:
           link: "/what"
         - text: "快速开始"
           link: "/started"
+        - text: "记发布开源组件到Maven Central仓库"
+          link: "/publish-maven-central-repo"
     - text: "写作"
       items:
         - text: "Markdown扩展"
@@ -32,7 +34,7 @@ npm create docu@latest
 
 会询问以下简单几个问题：
 
-```text
+```shell
 ? 请输入项目名称:
 ? 包名 (name):
 ? 版本 (version):
@@ -44,10 +46,99 @@ npm create docu@latest
 
 创建完成后
 
-```text
+```shell
 cd <project-name>
 npm install
 npm run dev
+```
+
+```python {1-2}
+# 计算斐波那契数列
+def fibonacci(n):
+    """生成斐波那契数列前n项"""
+    a, b = 0, 1
+    result = []
+    for _ in range(n):
+        result.append(a)
+        a, b = b, a + b
+    return result
+
+# 测试代码
+if __name__ == "__main__":
+    num = 10
+    print(f"斐波那契数列前{num}项:")
+    print(fibonacci(num))
+    
+    # 列表推导式示例
+    squares = [x**2 for x in range(1, 6)]
+    print("\n1-5的平方数:", squares)
+```
+
+```javascript
+// JavaScript 示例 (ES6箭头函数+Promise)
+const fetchData = (url) => {
+  return new Promise((resolve, reject) => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data received:', data);
+        resolve(data);
+      })
+      .catch(reject);
+  });
+};
+
+// 可选链操作符示例
+const user = { profile: { name: 'Alice' } };
+console.log(user?.profile?.age || 'Age not set');
+```
+
+```java
+// Java 示例 (Stream API)
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> languages = Arrays.asList("Python", "Java", "JavaScript");
+        
+        languages.stream()
+            .filter(lang -> lang.startsWith("J"))
+            .map(String::toUpperCase)
+            .forEach(System.out::println);
+    }
+}
+```
+
+```sql
+-- SQL 示例 (CTE递归查询)
+WITH RECURSIVE fibonacci(n, a, b) AS (
+    SELECT 1, 0, 1
+    UNION ALL
+    SELECT n + 1, b, a + b 
+    FROM fibonacci 
+    WHERE n < 10
+)
+SELECT a FROM fibonacci;
+```
+
+```rust
+// Rust 示例 (模式匹配+错误处理)
+use std::fs::File;
+
+fn read_file(path: &str) -> Result<String, std::io::Error> {
+    let mut file = File::open(path)?;
+    let mut contents = String::new();
+    std::io::Read::read_to_string(&mut file, &mut contents)?;
+    Ok(contents)
+}
+
+fn main() {
+    match read_file("example.txt") {
+        Ok(text) => println!("文件内容: {}", text),
+        Err(e) => eprintln!("错误: {}", e),
+    }
+}
 ```
 
 ### 目录结构

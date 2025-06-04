@@ -1,6 +1,6 @@
 // src/errors/index.ts
 
-import { GlobalError } from "./global.error";
+import { GlobalError } from "./global.error.js";
 
 // 定义一个 BadRequestError 类，表示 HTTP 400 错误。通常用于表示客户端请求错误。
 export class BadRequestError extends GlobalError {

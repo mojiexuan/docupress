@@ -2,8 +2,12 @@
 import { readFileSync } from "fs";
 import path from "path";
 import { parse } from "yaml";
-import logger from "../logger";
-import { getNowDate } from "../utils";
+import logger from "../logger.js";
+import { getNowDate } from "../utils/index.js";
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // 定义一个变量来缓存配置对象，初始值为 null
 const configCache: Config = {

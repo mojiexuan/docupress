@@ -1,6 +1,6 @@
 // src/logger.ts
 
-import pino from 'pino';
+import {pino} from 'pino';
 
 // 确定当前的运行环境
 const isProduction = process.env.NODE_ENV === 'production';

@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { homeController,articleController } from "../controllers";
+import { homeController,articleController } from "../controllers/index.js";
 
 async function userRouter(fastify: FastifyInstance) {
   fastify.route({

@@ -54,6 +54,8 @@
   scroll-behavior: smooth;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: var(--jxt-header-height) 25px 0 25px;
+  box-sizing: border-box;
 }
 
 .article-container-aside {
@@ -85,10 +87,78 @@
   transition: color 0.25s;
 }
 
+.article-container-sidebar-nav-item-text-active {
+  color: var(--jxt-main-color);
+}
+
 .article-container-sidebar-section {
   padding-top: 10px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--jxt-border-card-color);
+}
+
+.article-container-footer {
+  margin-top: 64px;
+}
+
+.article-container-footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+}
+
+.article-container-footer-info-time {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--jxt-text-color-2);
+}
+
+.article-container-footer-nav {
+  display: grid;
+  grid-row-gap: 8px;
+  border-top: 1px solid var(--jxt-border-divider-color);
+  padding-top: 24px;
+  padding-bottom: 96px;
+}
+
+.article-container-footer-nav-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--jxt-border-divider-color);
+  border-radius: 8px;
+  padding: 11px 16px 13px;
+}
+
+.article-container-footer-nav-item-next{
+  text-align: right;
+}
+
+.article-container-footer-nav-item:hover{
+  border-color: var(--jxt-main-color);
+}
+
+.article-container-footer-nav-item-text {
+  color: var(--jxt-text-color-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  display: block;
+}
+
+.article-container-footer-nav-item-title {
+  color: var(--jxt-main-color);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  transition: color 0.25s;
+  display: block;
+}
+
+.article-content img {
+  max-width: 100%;
+  border-radius: 5px;
 }
 
 .article-content :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) > a {
@@ -173,16 +243,18 @@
   color: var(--jxt-code-color);
 }
 
+.shiki {
+  background-color: var(--jxt-feature-card-bg) !important;
+}
+
 .article-content pre {
   width: 100%;
   overflow-x: auto;
   border-radius: 8px;
   margin: 16px 0;
-  background-color: var(--jxt-feature-card-bg);
   position: relative;
   z-index: 1;
   padding: 20px 0;
-  transition: background-color 0.5s;
 }
 
 .article-content pre,

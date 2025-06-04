@@ -1,25 +1,12 @@
-.mjx-header {
-  padding: 0 50px;
-  justify-content: space-between;
-}
-
-.mjx-header-operate-container {
-  display: flex;
-}
-
-.mjx-header-operate-more {
-  display: none;
-}
-
 .article-container-aside {
   position: fixed;
   top: 0;
   left: 0;
   display: block;
-  min-width: 258px;
-  max-width: 258px;
+  min-width: 308px;
+  max-width: 308px;
   height: 100vh;
-  padding: var(--jxt-header-height) 25px 0 50px;
+  padding: var(--jxt-header-height) 25px 0 100px;
   background-color: var(--jxt-feature-card-bg);
   overflow-y: scroll;
   overflow-x: hidden;
@@ -44,10 +31,6 @@
 }
 
 .article-container {
-  padding: var(--jxt-header-height) calc(224px + 25px) 0 calc(258px + 25px);
+  padding: var(--jxt-header-height) calc(224px + 50px) 0 calc(308px + 50px);
   box-sizing: border-box;
-}
-
-.article-container-menu{
-  display: none;
 }
