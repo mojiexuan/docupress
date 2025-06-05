@@ -4,9 +4,10 @@ import { parseYaml } from "../utils/index.js";
 
 export const homeController = (req:FastifyRequest, reply:FastifyReply) => {
   const APP_INFO = getConfig("app") as ConfigApp;
-  const { data } = parseYaml("index");
+  const { data,content } = parseYaml("index");
   reply.view('index', {
     ...APP_INFO,
-    ...data
+    ...data,
+    content: content === "" ? null : content
   });
 };

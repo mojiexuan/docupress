@@ -42,6 +42,11 @@
       </div>
       {% endfor %}
     </div>
+    {% if content %}
+    <div class="index-content-container">
+      {{ content | safe }}
+    </div>
+    {% endif %}
   </div>
 {% endblock %}
 

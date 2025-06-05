@@ -27,6 +27,7 @@ interface ConfigApp {
     label: string;
   };
   time: string;
+  sidebar?:any;
 }
 
 interface ConfigOutline {

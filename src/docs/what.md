@@ -37,4 +37,14 @@ DocuPres站在VitePress之上，固然也存在专门的技术文档主题，并
 
 ## 快速开始
 
+```js{4}
+export default {
+  data () {
+    return {    // [!code highlight]
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+
 [快速开始](/started)

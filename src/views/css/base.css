@@ -29,10 +29,16 @@ a {
   word-break: break-all;
 }
 
+a[target="_blank"]::after {
+  content: " ↗";
+  color: var(--jxt-text-color-blank);
+}
+
 img {
   /* user-drag: none; */
   -webkit-user-drag: none;
   -moz-user-drag: none;
+  margin-top: 10px;
 }
 
 h1,
@@ -67,6 +73,28 @@ table {
   border-collapse: collapse;
 }
 
+dl {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  unicode-bidi: isolate;
+}
+
+dt {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+dd {
+  display: block;
+  margin-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+figure {
+  text-align: center;
+}
+
 .mjx-header,
 .mjx-main,
 .mjx-footer {
@@ -91,6 +119,7 @@ html[data-theme="Light"] {
   --jxt-text-color-1: #3c3c43;
   --jxt-text-color-2: #3c3c43c7;
   --jxt-text-color-3: #3c3c438f;
+  --jxt-text-color-blank: #67676C;
   --jxt-menu-bg: #ffffff;
   --jxt-box-shadow-1: 0 12px 32px rgba(0, 0, 0, 0.1),
     0 2px 6px rgba(0, 0, 0, 0.08);
@@ -99,8 +128,13 @@ html[data-theme="Light"] {
   --jxt-code-bg: #8e96aa24;
   --jxt-code-font-size: 0.875em;
   --jxt-code-color: #f47643;
+  --jxt-code-line-diff-add:#10b98124;
+  --jxt-code-line-diff-remove-left-icon:#b8272c;
+  --jxt-code-line-diff-add-left-icon:#18794e;
+  --jxt-checkbox-disabled-bg: #F3F4F6;
   --jxt-custom-block-info-bg: #8e96aa24;
   --jxt-custom-block-tip-bg: #ebfef7;
+  --jxt-custom-block-important-bg: #f1ecfc;
   --jxt-custom-block-warning-bg: #eab30824;
   --jxt-custom-block-danger-bg: #f43f5e24;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
@@ -128,6 +162,7 @@ html[data-theme="Dark"] {
   --jxt-text-color-1: #fffff5db;
   --jxt-text-color-2: #ebebf599;
   --jxt-text-color-3: #ebebf561;
+  --jxt-text-color-blank: #9999A0;
   --jxt-menu-bg: #202127;
   --jxt-box-shadow-1: 0 12px 32px rgba(0, 0, 0, 0.1),
     0 2px 6px rgba(0, 0, 0, 0.08);
@@ -136,8 +171,13 @@ html[data-theme="Dark"] {
   --jxt-code-bg: #65758529;
   --jxt-code-font-size: 0.875em;
   --jxt-code-color: #f47643;
+  --jxt-code-line-diff-add:#10b98129;
+  --jxt-code-line-diff-remove-left-icon:#f66f81;
+  --jxt-code-line-diff-add-left-icon:#3dd68c;
+  --jxt-checkbox-disabled-bg: #24262B;
   --jxt-custom-block-info-bg: #65758529;
   --jxt-custom-block-tip-bg: #002f29;
+  --jxt-custom-block-important-bg: #312b40;
   --jxt-custom-block-warning-bg: #eab30829;
   --jxt-custom-block-danger-bg: #f43f5e29;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
