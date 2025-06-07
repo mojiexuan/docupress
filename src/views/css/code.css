@@ -1,11 +1,105 @@
-code[v-pre] {
+/* code[v-pre] {
   display: flex;
   flex-direction: column;
+} */
+
+.shiki,.hljs {
+  background-color: var(--jxt-feature-card-bg) !important;
+}
+
+html[data-theme="Light"] .shiki,
+html[data-theme="Light"] .shiki span {
+  color: var(--shiki-light);
+}
+
+html[data-theme="Dark"] .shiki,
+html[data-theme="Dark"] .shiki span {
+  color: var(--shiki-dark);
+}
+
+.line,.hljs code {
+  padding: 0 24px;
 }
 
 .shiki .highlighted {
-  background: #7f7f7f20;
-  display: block;
-  margin: 0 -1rem;
-  padding: 0 1rem;
+  background-color: var(--jxt-custom-block-info-bg);
+  width: 100%;
+  transition: background-color 0.5s;
+  display: inline-block;
+}
+
+.shiki .error {
+  background-color: var(--jxt-custom-block-danger-bg);
+  width: 100%;
+  transition: background-color 0.5s;
+  display: inline-block;
+}
+
+.shiki .warning {
+  background-color: var(--jxt-custom-block-warning-bg);
+  width: 100%;
+  transition: background-color 0.5s;
+  display: inline-block;
+}
+
+.shiki .remove {
+  background-color: var(--jxt-custom-block-danger-bg);
+  width: 100%;
+  transition: background-color 0.5s;
+  display: inline-block;
+}
+
+.shiki .remove::before {
+  position: absolute;
+  left: 10px;
+  content: "-";
+  color: var(--jxt-code-line-diff-remove-left-icon);
+}
+
+.shiki .add {
+  background-color: var(--jxt-code-line-diff-add);
+  width: 100%;
+  transition: background-color 0.5s;
+  display: inline-block;
+}
+
+.shiki .add::before{
+  position: absolute;
+  left: 10px;
+  content: "+";
+  color: var(--jxt-code-line-diff-add-left-icon);
+}
+
+.has-focused .line:not(.focused){
+    filter: blur(.095rem);
+    opacity: .7;
+    transition: filter .35s, opacity .35s;
+}
+
+.has-focused:hover .line:not(.focused){ 
+  filter: blur(0);
+}
+
+html[data-theme="Light"] .hljs-attr{
+  color: #D32F2F;
+}
+
+html[data-theme="Dark"] .hljs-attr{ 
+  color: #F8F8F8;
+}
+
+html[data-theme="Light"] .hljs-string{
+  color: #22863A;
+}
+
+html[data-theme="Dark"] .hljs-string{ 
+  color: #FFAB70;
+}
+
+html[data-theme="Light"] .hljs-number{
+  color: #1976D2;
+}
+
+html[data-theme="Dark"] .hljs-number{ 
+  color: #F8F8F8;
 }

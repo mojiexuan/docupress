@@ -6,7 +6,7 @@ const copySvg = `<svg t="1747030748345" class="icon" viewBox="0 0 1024 1024" ver
  * @param code 处理后的html代码串,getPre不会处理，只做拼接
  */
 const getPre = (lang: string,code:string) => {
-    return `<pre><button class="article-content-pre-copy">${copySvg}</button><span class="article-content-pre-lang">${lang}</span><code class="hljs language-${lang}">${code}</code></pre>`;
+    return `<div><button class="article-content-pre-copy">${copySvg}</button><span class="article-content-pre-lang">${lang}</span><div class="language language-${lang}">${code}</div></div>`;
 }
 
 export {

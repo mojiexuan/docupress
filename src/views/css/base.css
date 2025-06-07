@@ -13,6 +13,7 @@ body {
   font-weight: 400;
   color: var(--jxt-text-color-1);
   overflow-x: hidden;
+  background-color: var(--jxt-bg-color-card);
 }
 
 :root {

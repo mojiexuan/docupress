@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="Light">
+<html lang="zh-CN" dir="ltr" data-theme="Light">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
@@ -12,6 +12,7 @@
   <title>{{title}}</title>
   <link rel="shortcut icon" href="{{ favicon }}">
   <style>{% include "css/base.css" ignore missing %}</style>
+  <style>{% include "css/header.css" ignore missing %}</style>
   {% block head %}{% endblock %}
 </head>
 <body>
@@ -38,6 +39,9 @@
       </span>
       <div class="mjx-header-operate mjx-header-operate-more">
         {% include "layouts/more.njk" ignore missing %}
+        <div class="mjx-header-operate-more-container">
+          312465
+        </div>
       </div>
     </div>
   </header>
@@ -49,5 +53,6 @@
       {% block footer %}{% endblock %}
     </footer>
   {% endif %}
+  {% block scripts %}{% endblock %}
 </body>
 </html>

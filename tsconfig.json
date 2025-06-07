@@ -26,7 +26,8 @@
       "@/*": ["*"]                   // 示例：将 "@/utils" 映射到 "src/utils"
     },
 
-    "types": ["node"]
+    "types": ["node"],
+    "allowSyntheticDefaultImports":true
   },
   "include": ["src/**/*"],           // 包含的文件
   "exclude": ["node_modules", "dist"] // 排除的文件

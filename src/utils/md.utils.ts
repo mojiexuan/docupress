@@ -20,7 +20,17 @@ import markdownitmark from "markdown-it-mark";
 import markdownitanchor from "markdown-it-anchor";
 import markdownittocdoneright from "markdown-it-toc-done-right";
 import markdownitattrs from "markdown-it-attrs";
-// import Shiki from '@shikijs/markdown-it';
+import {
+  transformerNotationDiff,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight,
+  transformerNotationFocus,
+  transformerNotationErrorLevel,
+  transformerMetaHighlight,
+  transformerRenderWhitespace,
+  transformerMetaWordHighlight,
+  transformerRemoveNotationEscape,
+} from "@shikijs/transformers";
 import { codeToHtml, ShikiTransformer } from "shiki";
 import { alert as markdownitalert } from "@mdit/plugin-alert";
 import { figure as markdownitfigure } from "@mdit/plugin-figure";
@@ -32,6 +42,8 @@ import { ruby as markdownitruby } from "@mdit/plugin-ruby";
 import { spoiler as markdownitspoiler } from "@mdit/plugin-spoiler";
 import { tasklist as markdownittasklist } from "@mdit/plugin-tasklist";
 import { getPre } from "./index.js";
+import apiDocuPlugin from "./apidoc.utils.js";
+import chartPlugin from "./chart.utils.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -76,49 +88,16 @@ const alertTitleMap: Record<string, string> = {
 // 代码行高亮
 const codeHighlightedTransformer: ShikiTransformer = {
   name: "codeHighlightedTransformer",
-  line(node, line) {
+  code(node) {
     if (node.children.length > 0) {
-      let children = (
-        node.children[node.children.length - 1] as {
-          children: { type: string; value: string }[];
-        }
-      ).children;
-      if (children.length > 0) {
-        if (children[children.length - 1].type === "text") {
-          if (
-            children[children.length - 1].value.trim() ===
-            "// [!code highlight]"
-          ) {
-            this.addClassToHast(node, "shiki-line-highlight");
-            node.children.pop();
+      if (
+        (
+          node.children[node.children.length - 1] as {
+            children: { type: string; value: string }[];
           }
-          if (
-            children[children.length - 1].value.trim() === "// [!code focus]"
-          ) {
-            this.addClassToHast(node, "shiki-line-focus");
-            node.children.pop();
-          }
-          if (children[children.length - 1].value.trim() === "// [!code --]") {
-            this.addClassToHast(node, "shiki-line-diff-remove");
-            node.children.pop();
-          }
-          if (children[children.length - 1].value.trim() === "// [!code ++]") {
-            this.addClassToHast(node, "shiki-line-diff-add");
-            node.children.pop();
-          }
-          if (
-            children[children.length - 1].value.trim() === "// [!code error]"
-          ) {
-            this.addClassToHast(node, "shiki-line-error");
-            node.children.pop();
-          }
-          if (
-            children[children.length - 1].value.trim() === "// [!code warning]"
-          ) {
-            this.addClassToHast(node, "shiki-line-warning");
-            node.children.pop();
-          }
-        }
+        ).children.length === 0
+      ) {
+        node.children.pop();
       }
     }
   },
@@ -140,7 +119,18 @@ const md = MarkdownItAsync({
         light: "min-light",
       },
       defaultColor: false,
-      transformers: [codeHighlightedTransformer],
+      transformers: [
+        codeHighlightedTransformer,
+        transformerNotationDiff(),
+        transformerNotationHighlight(),
+        transformerNotationWordHighlight(),
+        transformerNotationFocus(),
+        transformerNotationErrorLevel(),
+        transformerMetaHighlight(),
+        transformerRenderWhitespace(),
+        transformerMetaWordHighlight(),
+        transformerRemoveNotationEscape(),
+      ],
     });
     return html;
   },
@@ -186,7 +176,9 @@ const md = MarkdownItAsync({
     leftDelimiter: "{",
     rightDelimiter: "}",
     allowedAttributes: ["id", "class", "style", "data-*", "title", "target"], // 为空数组时支持所有属性，当然这是不安全的
-  }); // 属性{}
+  }) // 属性{}
+  .use(apiDocuPlugin) // 接口文档
+  .use(chartPlugin); // 图表
 
 // 添加自定义容器
 addCustomContainer(md, [
@@ -249,7 +241,7 @@ const parseYaml = (name: string) => {
  * @param text markdown文本
  */
 const parseMd = async (title: string, outline: ConfigOutline, text: string) => {
-  text = `<article class="article-content"><h1>${title}</h1>\n${text}<footer class="article-footer"><div class="article-info"></div><nav></nav></footer></article><div class="article-outline-content"><div class="article-outline-title">${outline.label}</div>\n\n[toc]\n\n</div>`;
+  text = `<article class="article-content"><h1>${title}</h1>\n\n${text}\n\n<footer class="article-footer"><div class="article-info"></div><nav></nav></footer></article><div class="article-outline-content"><div class="article-outline-title">${outline.label}</div>\n\n[toc]\n\n</div>`;
   return md.renderAsync(text);
 };
 
