@@ -23,7 +23,7 @@
   min-height: 224px;
   width: 224px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100vh - var(--jxt-header-height));
   padding: 48px 0 0 0;
   box-sizing: border-box;
