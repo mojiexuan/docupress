@@ -1,5 +1,5 @@
-<label class="mjx-theme-switch">
-  <input checked="true" id="checkbox" type="checkbox" onchange="mjxToggleTheme(this)" />
+<label class="mjx-theme-switch" for="theme-switch">
+  <input checked="true" id="theme-switch" type="checkbox" onchange="mjxToggleTheme(this)" />
   <span class="mjx-theme-slider">
     <div class="mjx-theme-star mjx-theme-star_1"></div>
     <div class="mjx-theme-star mjx-theme-star_2"></div>
@@ -13,25 +13,6 @@
     </svg>
   </span>
 </label>
-
-<script>
-  const mjxToggleTheme = (res)=>{
-    if(res.checked){
-      setTheme('Light')
-    }else{
-      setTheme('Dark')
-    }
-  }
-
-  /**
-    * 设置html标签上的自定义属性data-theme为Dark或Light
-    * @param theme 
-    */
-  function setTheme(theme) {
-    const htmlElement = document.documentElement;
-    htmlElement.dataset.theme = theme;
-  }
-</script>
 
 <style>
 .mjx-theme-switch {

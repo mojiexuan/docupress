@@ -21,3 +21,7 @@ DocuPress 是一款静态站点生成器，通过配置和 Markdown 文档，可
 
 > [!tip]
 > 想要快速体验？跳到[快速开始](/started)
+
+::: details
+这时可折叠的详情块
+:::

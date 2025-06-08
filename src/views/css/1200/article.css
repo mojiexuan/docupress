@@ -1,10 +1,16 @@
+.article-container {
+  --jxt-sidebar-width:308px;
+  padding: 48px calc(224px + 50px) 0 calc(308px + 50px);
+  box-sizing: border-box;
+}
+
 .article-container-aside {
   position: fixed;
   top: var(--jxt-header-height);
   left: 0;
   display: block;
-  min-width: 308px;
-  max-width: 308px;
+  width: var(--jxt-sidebar-width);
+  max-width: var(--jxt-sidebar-width);
   height: calc(100vh - var(--jxt-header-height));
   padding: 0 25px 0 100px;
   background-color: var(--jxt-feature-card-bg);
@@ -30,9 +36,8 @@
   scroll-behavior: smooth;
 }
 
-.article-container {
-  padding: 48px calc(224px + 50px) 0 calc(308px + 50px);
-  box-sizing: border-box;
+.article-container-menu{
+  display: none;
 }
 
 .chart-pc{

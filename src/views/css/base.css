@@ -17,6 +17,7 @@ body {
 }
 
 :root {
+  color-scheme: light dark;
   scrollbar-color: var(--jxt-scrollbar-thumb-color)
     var(--jxt-scrollbar-track-color);
   scroll-behavior: smooth;
@@ -122,8 +123,7 @@ html[data-theme="Light"] {
   --jxt-text-color-3: #3c3c438f;
   --jxt-text-color-blank: #67676C;
   --jxt-menu-bg: #ffffff;
-  --jxt-box-shadow-1: 0 12px 32px rgba(0, 0, 0, 0.1),
-    0 2px 6px rgba(0, 0, 0, 0.08);
+  --jxt-box-shadow-1: 0 12px 32px #0000001a, 0 2px 6px #00000014;
   --jxt-black: #1b1b1f;
   --jxt-white: #ffffff;
   --jxt-code-bg: #8e96aa24;
@@ -140,6 +140,7 @@ html[data-theme="Light"] {
   --jxt-custom-block-danger-bg: #f43f5e24;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
   --jxt-header-height: 64px;
+  --jxt-sidebar-width: 0px;
   --jxt-scrollbar-track-color: #fcfcfc;
   --jxt-scrollbar-thumb-color: #8b8b8b;
   --jxt-scrollbar-thumb-hover-color: #636363;
@@ -165,8 +166,7 @@ html[data-theme="Dark"] {
   --jxt-text-color-3: #ebebf561;
   --jxt-text-color-blank: #9999A0;
   --jxt-menu-bg: #202127;
-  --jxt-box-shadow-1: 0 12px 32px rgba(0, 0, 0, 0.1),
-    0 2px 6px rgba(0, 0, 0, 0.08);
+  --jxt-box-shadow-1: 0 12px 32px #0000001a, 0 2px 6px #00000014;
   --jxt-black: #1b1b1f;
   --jxt-white: #ffffff;
   --jxt-code-bg: #65758529;
@@ -183,9 +183,18 @@ html[data-theme="Dark"] {
   --jxt-custom-block-danger-bg: #f43f5e29;
   --jxt-custom-block-details-bg: var(--jxt-custom-block-info-bg);
   --jxt-header-height: 64px;
+  --jxt-sidebar-width: 0px;
   --jxt-scrollbar-track-color: #2c2c2c;
   --jxt-scrollbar-thumb-color: #9f9f9f;
   --jxt-scrollbar-thumb-hover-color: #d1d1d1;
+}
+
+@media (prefers-color-scheme: dark) {
+  
+}
+
+html[data-theme="Dark"] img {
+    filter: brightness(.8) contrast(1.2);
 }
 
 html[data-theme="Dark"] .shiki-light {

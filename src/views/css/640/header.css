@@ -1,0 +1,37 @@
+.mjx-header-operate-more-menu {
+  position: absolute;
+  top: var(--jxt-header-height);
+  right: 0;
+  width: max-content;
+  min-width: 128px;
+  box-shadow: var(--jxt-box-shadow-1);
+  height: max-content;
+  max-height: calc(100vh - var(--jxt-header-height));
+  border-radius: 12px;
+  padding: 12px 0;
+  transition: background-color 0.5s;
+  overflow-y: auto;
+  background-color: var(--jxt-menu-bg);
+}
+
+.mjx-header-operate-more-menu-container{
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.mjx-header-operate-more-menu-container-item{
+    display: flex;
+    min-width: 176px;
+    align-items: center;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+}
+
+.mjx-header-operate-more-menu-container-item.theme{
+  justify-content: space-between;
+  border-top: none;
+  padding: 0 12px;
+  background-color: transparent;
+}
