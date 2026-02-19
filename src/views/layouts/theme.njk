@@ -1,5 +1,5 @@
 <label class="mjx-theme-switch" for="theme-switch">
-  <input checked="true" id="theme-switch" type="checkbox" onchange="mjxToggleTheme(this)" />
+  <input checked="true" id="theme-switch" type="checkbox" />
   <span class="mjx-theme-slider">
     <div class="mjx-theme-star mjx-theme-star_1"></div>
     <div class="mjx-theme-star mjx-theme-star_2"></div>
@@ -15,96 +15,95 @@
 </label>
 
 <style>
-.mjx-theme-switch {
-  font-size: 10px;
-  position: relative;
-  display: inline-block;
-  width: 4em;
-  height: 2.2em;
-  border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  .mjx-theme-switch {
+    font-size: 10px;
+    position: relative;
+    display: inline-block;
+    width: 4em;
+    height: 2.2em;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-.mjx-theme-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+  .mjx-theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
-.mjx-theme-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #2a2a2a;
-  transition: 0.4s;
-  border-radius: 30px;
-  overflow: hidden;
-}
+  .mjx-theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2a2a2a;
+    transition: 0.4s;
+    border-radius: 30px;
+    overflow: hidden;
+  }
 
-.mjx-theme-slider:before {
-  position: absolute;
-  content: "";
-  height: 1.2em;
-  width: 1.2em;
-  border-radius: 20px;
-  left: 0.5em;
-  bottom: 0.5em;
-  transition: 0.4s;
-  transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
-  box-shadow: inset 8px -4px 0px 0px #fff;
-}
+  .mjx-theme-slider:before {
+    position: absolute;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 20px;
+    left: 0.5em;
+    bottom: 0.5em;
+    transition: 0.4s;
+    transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+    box-shadow: inset 8px -4px 0px 0px #fff;
+  }
 
-.mjx-theme-switch input:checked + .mjx-theme-slider {
-  background-color: #00a6ff;
-}
+  .mjx-theme-switch input:checked + .mjx-theme-slider {
+    background-color: #00a6ff;
+  }
 
-.mjx-theme-switch input:checked + .mjx-theme-slider:before {
-  transform: translateX(1.8em);
-  box-shadow: inset 15px -4px 0px 15px #ffcf48;
-}
+  .mjx-theme-switch input:checked + .mjx-theme-slider:before {
+    transform: translateX(1.8em);
+    box-shadow: inset 15px -4px 0px 15px #ffcf48;
+  }
 
-.mjx-theme-star {
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  width: 5px;
-  transition: all 0.4s;
-  height: 5px;
-}
+  .mjx-theme-star {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    width: 5px;
+    transition: all 0.4s;
+    height: 5px;
+  }
 
-.mjx-theme-star_1 {
-  left: 2.5em;
-  top: 0.5em;
-}
+  .mjx-theme-star_1 {
+    left: 2.5em;
+    top: 0.5em;
+  }
 
-.mjx-theme-star_2 {
-  left: 2.2em;
-  top: 1.2em;
-}
+  .mjx-theme-star_2 {
+    left: 2.2em;
+    top: 1.2em;
+  }
 
-.mjx-theme-star_3 {
-  left: 3em;
-  top: 0.9em;
-}
+  .mjx-theme-star_3 {
+    left: 3em;
+    top: 0.9em;
+  }
 
-.mjx-theme-switch input:checked ~ .mjx-theme-slider .mjx-theme-star {
-  opacity: 0;
-}
+  .mjx-theme-switch input:checked ~ .mjx-theme-slider .mjx-theme-star {
+    opacity: 0;
+  }
 
-.mjx-theme-cloud {
-  width: 3.5em;
-  position: absolute;
-  bottom: -1.4em;
-  left: -1.1em;
-  opacity: 0;
-  transition: all 0.4s;
-}
+  .mjx-theme-cloud {
+    width: 3.5em;
+    position: absolute;
+    bottom: -1.4em;
+    left: -1.1em;
+    opacity: 0;
+    transition: all 0.4s;
+  }
 
-.mjx-theme-switch input:checked ~ .mjx-theme-slider .mjx-theme-cloud {
-  opacity: 1;
-}
-
+  .mjx-theme-switch input:checked ~ .mjx-theme-slider .mjx-theme-cloud {
+    opacity: 1;
+  }
 </style>

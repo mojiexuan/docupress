@@ -1,20 +1,21 @@
 ---
 title: "Markdown扩展"
+description: "DocuPress支持的Markdown扩展语法"
+time: "2026-02-19"
 sidebar:
-    - text: "简介"
-      items:
-        - text: "什么是DocuPress？"
-          link: "/what"
-        - text: "快速开始"
-          link: "/started"
-        - text: "记发布开源组件到Maven Central仓库"
-          link: "/publish-maven-central-repo"
-    - text: "写作"
-      items:
-        - text: "Markdown扩展"
-          link: "/markdown"
-    - text: "Api参考"
-    - text: "Api参考"
+  - text: "简介"
+    items:
+      - text: "什么是DocuPress？"
+        link: "/what"
+      - text: "快速开始"
+        link: "/started"
+      - text: "记发布开源组件到Maven Central仓库"
+        link: "/publish-maven-central-repo"
+  - text: "写作"
+    items:
+      - text: "Markdown扩展"
+        link: "/markdown"
+  - text: "Api参考"
 ---
 
 ## Gray Matter
@@ -49,15 +50,15 @@ title: "Markdown扩展"
 @apiSuccess {string} [name] 用户名
 @apiSuccessExample {json}
 {
-  "id": 1,
-  "name": "张三"
+"id": 1,
+"name": "张三"
 }
 @apiError {number} [code] 错误码
 @apiError {string} [message] 错误信息
 @apiErrorExample {json}
 {
-  "code": 1,
-  "message": "用户不存在"
+"code": 1,
+"message": "用户不存在"
 }
 @apiEnd
 ```
@@ -77,15 +78,15 @@ title: "Markdown扩展"
 @apiSuccess {string} [name] 用户名
 @apiSuccessExample {json}
 {
-  "id": 1,
-  "name": "张三"
+"id": 1,
+"name": "张三"
 }
 @apiError {number} [code] 错误码
 @apiError {string} [message] 错误信息
 @apiErrorExample {json}
 {
-  "code": 1,
-  "message": "用户不存在"
+"code": 1,
+"message": "用户不存在"
 }
 @apiEnd
 
@@ -98,39 +99,39 @@ title: "Markdown扩展"
 ```markdown
 @chartStart
 {
-  title: {
-    text: 'Referer of a Website',
-    subtext: 'Fake Data',
-    left: 'center'
-  },
-  tooltip: {
-    trigger: 'item'
-  },
-  legend: {
-    orient: 'vertical',
-    left: 'left'
-  },
-  series: [
-    {
-      name: 'Access From',
-      type: 'pie',
-      radius: '50%',
-      data: [
-        { value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' }
-      ],
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10,
-          shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
-        }
-      }
-    }
-  ]
+title: {
+text: 'Referer of a Website',
+subtext: 'Fake Data',
+left: 'center'
+},
+tooltip: {
+trigger: 'item'
+},
+legend: {
+orient: 'vertical',
+left: 'left'
+},
+series: [
+{
+name: 'Access From',
+type: 'pie',
+radius: '50%',
+data: [
+{ value: 1048, name: 'Search Engine' },
+{ value: 735, name: 'Direct' },
+{ value: 580, name: 'Email' },
+{ value: 484, name: 'Union Ads' },
+{ value: 300, name: 'Video Ads' }
+],
+emphasis: {
+itemStyle: {
+shadowBlur: 10,
+shadowOffsetX: 0,
+shadowColor: 'rgba(0, 0, 0, 0.5)'
+}
+}
+}
+]
 }
 @chartEnd
 ```
@@ -139,45 +140,45 @@ title: "Markdown扩展"
 
 @chartStart
 {
-  title: {
-    text: 'Referer of a Website',
-    subtext: 'Fake Data',
-    left: 'center'
-  },
-  tooltip: {
-    trigger: 'item'
-  },
-  legend: {
-    orient: 'vertical',
-    left: 'left'
-  },
-  series: [
-    {
-      name: 'Access From',
-      type: 'pie',
-      radius: '50%',
-      data: [
-        { value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' }
-      ],
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10,
-          shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
-        }
-      }
-    }
-  ]
+title: {
+text: 'Referer of a Website',
+subtext: 'Fake Data',
+left: 'center'
+},
+tooltip: {
+trigger: 'item'
+},
+legend: {
+orient: 'vertical',
+left: 'left'
+},
+series: [
+{
+name: 'Access From',
+type: 'pie',
+radius: '50%',
+data: [
+{ value: 1048, name: 'Search Engine' },
+{ value: 735, name: 'Direct' },
+{ value: 580, name: 'Email' },
+{ value: 484, name: 'Union Ads' },
+{ value: 300, name: 'Video Ads' }
+],
+emphasis: {
+itemStyle: {
+shadowBlur: 10,
+shadowOffsetX: 0,
+shadowColor: 'rgba(0, 0, 0, 0.5)'
+}
+}
+}
+]
 }
 @chartEnd
 
 **option内容**
 
-[Apache ECharts](https://echarts.apache.org/examples/zh/index.html){target="_blank"}
+[Apache ECharts](https://echarts.apache.org/examples/zh/index.html){target="\_blank"}
 
 ## 缩写
 
@@ -186,16 +187,16 @@ title: "Markdown扩展"
 **语法**
 
 ```markdown
-*[HTML]: 超文本标记语言
-*[W3C]: 万维网联盟
+_[HTML]: 超文本标记语言
+_[W3C]: 万维网联盟
 
 HTML 规范由 W3C 维护。
 ```
 
 **示例**
 
-*[HTML]: 超文本标记语言
-*[W3C]: 万维网联盟
+_[HTML]: 超文本标记语言
+_[W3C]: 万维网联盟
 
 HTML 规范由 W3C 维护。
 
@@ -267,7 +268,7 @@ HTML 规范由 W3C 维护。
 :::
 
 ::: warning
-*内部支持Markdown*
+_内部支持Markdown_
 :::
 ```
 
@@ -294,7 +295,7 @@ HTML 规范由 W3C 维护。
 :::
 
 ::: warning
-*内部支持Markdown*
+_内部支持Markdown_
 :::
 
 ## 属性锚点 {#grammar}
@@ -458,9 +459,9 @@ $$
 
 **支持列表**
 
-[KaTeX 支持功能](https://katex.org/docs/supported.html){target="_blank"}
+[KaTeX 支持功能](https://katex.org/docs/supported.html){target="\_blank"}
 
-[KaTeX 支持列表](https://katex.org/docs/support_table.html){target="_blank"}
+[KaTeX 支持列表](https://katex.org/docs/support_table.html){target="\_blank"}
 
 ## 标记
 
@@ -564,7 +565,7 @@ DocuPress !!十分强大!!。
 
 **支持列表**
 
-[Emoji 列表](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md){target="_blank"}
+[Emoji 列表](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md){target="\_blank"}
 
 ## 在代码块中实现行高亮
 
@@ -575,7 +576,7 @@ DocuPress !!十分强大!!。
 
 **语法**
 
-```markdown
+````markdown
     ```js{4}
     export default {
       data () {
@@ -585,7 +586,7 @@ DocuPress !!十分强大!!。
       }
     }
     ```
-```
+````
 
 **示例**
 
@@ -603,28 +604,29 @@ export default {
 
 **语法**
 
-```markdown
+````markdown
 \```js
 export default {
-  data () {
-    return {    // [!code highlight]
-      msg: 'Highlighted!'
-    }
-  }
+data () {
+return { // [!code highlight]
+msg: 'Highlighted!'
+}
+}
 }
 \```
-```
+````
 
 **示例**
 
 ```js
 export default {
-  data () {
-    return {    // [!code highlight]
-      msg: 'Highlighted!'
-    }
-  }
-}
+  data() {
+    return {
+      // [!code highlight]
+      msg: "Highlighted!",
+    };
+  },
+};
 ```
 
 ## 高亮“错误”和“警告”
@@ -633,30 +635,30 @@ export default {
 
 **语法**
 
-```markdown
+````markdown
 \```js
 export default {
-  data () {
-    return {
-      msg: 'Error', // [!code error]
-      msg: 'Warning' // [!code warning]
-    }
-  }
+data () {
+return {
+msg: 'Error', // [!code error]
+msg: 'Warning' // [!code warning]
+}
+}
 }
 \```
-```
+````
 
 **示例**
 
 ```js
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Error', // [!code error]
-      msg: 'Warning' // [!code warning]
-    }
-  }
-}
+      msg: "Error", // [!code error]
+      msg: "Warning", // [!code warning]
+    };
+  },
+};
 ```
 
 ## 代码块中的颜色差异
@@ -665,18 +667,18 @@ export default {
 
 **语法**
 
-```markdown
+````markdown
 \```js
 export default {
-  data () {
-    return {
-      msg: 'Removed' // [!code --]
-      msg: 'Added' // [!code ++]
-    }
-  }
+data () {
+return {
+msg: 'Removed' // [!code --]
+msg: 'Added' // [!code ++]
+}
+}
 }
 \```
-```
+````
 
 **示例**
 
@@ -697,28 +699,28 @@ export default {
 
 **语法**
 
-```markdown
+````markdown
 \```js
 export default {
-  data () {
-    return {
-      msg: 'Focused' // [!code focus]
-    }
-  }
+data () {
+return {
+msg: 'Focused' // [!code focus]
+}
+}
 }
 \```
-```
+````
 
 **示例**
 
 ```js
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Focused' // [!code focus]
-    }
-  }
-}
+      msg: "Focused", // [!code focus]
+    };
+  },
+};
 ```
 
 ## 目录表 (TOC)
@@ -756,5 +758,3 @@ export default {
 [^1]: 我的推荐信。
 [^2]: 我引用了多行。
 [^fnref1]: 我的脚注参考。
-
-

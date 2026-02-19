@@ -61,11 +61,9 @@ const addCustomContainer = (
       render: function (tokens: MarkdownItContainerTokenType[], idx: number) {
         const m = tokens[idx].info.split(" ");
         if (tokens[idx].nesting === 1) {
-          return `<div class="custom-container custom-container-${
-            item.name
-          }"><div class="custom-container-title">${
-            m.length > 2 ? md.utils.escapeHtml(m[2]) : item.title
-          }</div>\n`;
+          return `<div class="custom-container custom-container-${item.name
+            }"><div class="custom-container-title">${m.length > 2 ? md.utils.escapeHtml(m[2]) : item.title
+            }</div>\n`;
         } else {
           return "</div>\n";
         }
@@ -141,9 +139,8 @@ const md = MarkdownItAsync({
     titleRender: (tokens, idx) => {
       const token = tokens[idx];
       const content = token.content.trim();
-      return `<div class="markdown-alert-title">${
-        alertTitleMap[content] || content
-      }</div>`;
+      return `<div class="markdown-alert-title">${alertTitleMap[content] || content
+        }</div>`;
     },
   }) // GFM 风格的警告
   .use(markdownitsup) // 上标
@@ -203,9 +200,8 @@ md.use(markdownitcontainer, "details", {
   render: function (tokens: MarkdownItContainerTokenType[], idx: number) {
     const m = tokens[idx].info.split(" ");
     if (tokens[idx].nesting === 1) {
-      return `<details class="custom-container custom-container-details"><summary class="custom-container-title">${
-        m.length > 2 ? md.utils.escapeHtml(m[2]) : "详情"
-      }</summary>\n`;
+      return `<details class="custom-container custom-container-details"><summary class="custom-container-title">${m.length > 2 ? md.utils.escapeHtml(m[2]) : "详情"
+        }</summary>\n`;
     } else {
       return "</details>\n";
     }
@@ -241,7 +237,7 @@ const parseYaml = (name: string) => {
  * @param text markdown文本
  */
 const parseMd = async (title: string, outline: ConfigOutline, text: string) => {
-  text = `<article class="article-content"><h1>${title}</h1>\n\n${text}\n\n<footer class="article-footer"><div class="article-info"></div><nav></nav></footer></article><div class="article-outline-content"><div class="article-outline-title">${outline.label}</div>\n\n[toc]\n\n</div>`;
+  text = `<article class="article-content">${title ? `<h1>${title}</h1>` : ''}\n\n${text}\n\n<footer class="article-footer"><div class="article-info"></div><nav></nav></footer></article><div class="article-outline-content"><div class="article-outline-title">${outline.label}</div>\n\n[toc]\n\n</div>`;
   return md.renderAsync(text);
 };
 

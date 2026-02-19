@@ -14,7 +14,6 @@ sidebar:
         - text: "Markdown扩展"
           link: "/markdown"
     - text: "Api参考"
-    - text: "Api参考"
 ---
 
 ## 一、注册登录

@@ -49,7 +49,9 @@
   <footer class="article-container-footer">
     <div class="article-container-footer-info">
       <p></p>
-      <p class="article-container-footer-info-time">最后更新于: <time>2025/1/7 02:24</time></p>
+      {% if time %}
+        <p class="article-container-footer-info-time">最后更新于: <time>{{time}}</time></p>
+      {% endif %}
     </div>
     <nav class="article-container-footer-nav">
       <div class="article-container-footer-nav-pager">

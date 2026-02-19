@@ -34,5 +34,6 @@ export const articleController = async (
     content,
     title: data?.title + APP_INFO.name,
     url: "/" + article,
+    time:data?.time ?? APP_INFO.time
   });
 };
