@@ -22,12 +22,13 @@ export const articleController = async (
   content = await parseMd(content, data.title, APP_INFO.outline);
 
   // 获取页
-  const pagination = parsePagination(article);
+  const pagination = parsePagination(article, data.sidebar);
 
   return reply.view("article", {
     ...data,
     content,
-    title: data?.title ?? "" + APP_INFO.name ?? "",
+    name: data.title ?? "" + ("-" + APP_INFO.name) ?? "",
     url: "/" + article,
+    pagination,
   });
 };

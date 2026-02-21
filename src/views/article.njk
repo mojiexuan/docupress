@@ -1,5 +1,4 @@
 {% extends "layouts/base.njk" %}
-
 {# css链接 #}
 {% block head %}
   <style>{% include "css/article.css" ignore missing %}</style>
@@ -9,67 +8,74 @@
   <style>{% include "css/code.css" ignore missing %}</style>
   <style>{% include "css/apidoc.css" ignore missing %}</style>
 {% endblock %}
-
 {# 内容区 #}
 {% block content %}
-<div class="article-container">
-  <aside class="article-container-aside">
-    <nav>
-      {% for item in sidebar %}
-        <section class="article-container-sidebar-section">
-          <h2 class="article-container-aside-nav-title-text">{{item.text}}</h2>
-          {% if item.items %}
-            <ul class="article-container-sidebar-nav-list">
-              {% for item2 in item.items %}
-                <li>
-                  <a class="article-container-sidebar-nav-item-text {% if item2.link === url %} article-container-sidebar-nav-item-text-active {% endif %}" {% if item2.link %} href="{{item2.link}}" {% endif %} >{{item2.text}}</a>
-                </li>
-              {% endfor %}
-            </ul>
+  <div class="article-container">
+    <aside class="article-container-aside">
+      <nav>
+        {% for item in sidebar %}
+          <section class="article-container-sidebar-section">
+            <h2 class="article-container-aside-nav-title-text">{{ item.text }}</h2>
+            {% if item.items %}
+              <ul class="article-container-sidebar-nav-list">
+                {% for item2 in item.items %}
+                  <li>
+                    <a class="article-container-sidebar-nav-item-text {% if item2.link === url %} article-container-sidebar-nav-item-text-active {% endif %}" {% if item2.link %} href="{{ item2.link }}" {% endif %}>{{ item2.text }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </section>
+        {% endfor %}
+      </nav>
+    </aside>
+    <menu class="article-container-menu">
+      <div class="article-container-menu-item menu">
+        <span class="article-container-menu-item-icon left">
+          <svg width="19" height="19" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 19H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 38H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 28H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10L16 15L8 20V10Z" fill="none" stroke="#67676c" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="article-container-menu-item-text">菜单</span>
+      </div>
+      <div class="article-container-menu-item">
+        <span class="article-container-menu-item-text">页面导航</span>
+        <span class="article-container-menu-item-icon right">
+          <svg width="19" height="19" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 12L31 24L19 36" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </menu>
+    {{ content | safe }}
+    <footer class="article-container-footer">
+      <div class="article-container-footer-info">
+        <p></p>
+        {% if time %}
+          <p class="article-container-footer-info-time">最后更新于:
+            <time>{{ time }}</time>
+          </p>
+        {% endif %}
+      </div>
+      {% if pagination %}
+        <nav class="article-container-footer-nav">
+          {% if pagination.prev %}
+            <div class="article-container-footer-nav-pager">
+              <a class="article-container-footer-nav-item" href="{{ pagination.prev.link }}">
+                <span class="article-container-footer-nav-item-text">上一页</span>
+                <span class="article-container-footer-nav-item-title">{{ pagination.prev.title }}</span>
+              </a>
+            </div>
           {% endif %}
-        </section>
-      {% endfor %}
-    </nav>
-  </aside>
-  <menu class="article-container-menu">
-    <div class="article-container-menu-item menu">
-      <span class="article-container-menu-item-icon left">
-        <svg width="19" height="19" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 19H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 38H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 28H40" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10L16 15L8 20V10Z" fill="none" stroke="#67676c" stroke-width="2" stroke-linejoin="round"/></svg>
-      </span>
-      <span class="article-container-menu-item-text">菜单</span>
-    </div>
-    <div class="article-container-menu-item">
-      <span class="article-container-menu-item-text">页面导航</span>
-      <span class="article-container-menu-item-icon right">
-        <svg width="19" height="19" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 12L31 24L19 36" stroke="#67676c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </div>
-  </menu>
-  {{content | safe}}
-  <footer class="article-container-footer">
-    <div class="article-container-footer-info">
-      <p></p>
-      {% if time %}
-        <p class="article-container-footer-info-time">最后更新于: <time>{{time}}</time></p>
+          {% if pagination.next %}
+            <div class="article-container-footer-nav-pager">
+              <a class="article-container-footer-nav-item article-container-footer-nav-item-next" href="{{ pagination.next.link }}">
+                <span class="article-container-footer-nav-item-text">下一页</span>
+                <span class="article-container-footer-nav-item-title">{{ pagination.next.title }}</span>
+              </a>
+            </div>
+          {% endif %}
+        </nav>
       {% endif %}
-    </div>
-    <nav class="article-container-footer-nav">
-      <div class="article-container-footer-nav-pager">
-      <a class="article-container-footer-nav-item">
-        <span class="article-container-footer-nav-item-text">上一页</span>
-        <span class="article-container-footer-nav-item-title">123456789</span>
-      </a>
-      </div>
-      <div class="article-container-footer-nav-pager">
-      <a class="article-container-footer-nav-item article-container-footer-nav-item-next">
-        <span class="article-container-footer-nav-item-text">下一页</span>
-        <span class="article-container-footer-nav-item-title">123456789</span>
-      </a>
-      </div>
-    </nav>
-  </footer>
-</div>
+    </footer>
+  </div>
 {% endblock %}
-
-{% block scripts %}
-{% endblock %}
+{% block scripts %}{% endblock %}

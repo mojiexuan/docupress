@@ -260,6 +260,19 @@ const parseMd = async (
 /**
  * 解析页
  */
-const parsePagination = (name: string) => {};
+const parsePagination = (name: string, sidebar?: YamlArticleSidebar[]) => {
+  if (!sidebar) {
+    return undefined;
+  }
+  const side = sidebar.flatMap((s) => s.items ?? []);
+  const index = side.findIndex((s) => s.name === name);
+  if (index === -1) {
+    return undefined;
+  }
+  return {
+    prev: index > 0 ? side[index - 1] : undefined,
+    next: index < side.length - 1 ? side[index + 1] : undefined,
+  };
+};
 
 export { parseYaml, parseMd, parsePagination };
