@@ -8,10 +8,10 @@ import nunjucks from "nunjucks";
 import fastifyView from "@fastify/view";
 import fastifyStatic from "@fastify/static";
 import errorHandlerPlugin from "./plugins/error-handler-plugin.js";
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // 创建Fastify实例
 const app: FastifyInstance = Fastify({
@@ -30,10 +30,13 @@ const initServer = () => {
   app.register(errorHandlerPlugin);
 
   // 注册静态文件插件
-  app.register(fastifyStatic, {
-    root: path.join(__dirname, getConfig("app").public), // 静态文件目录
-    prefix: "/", // 访问前缀
-  });
+  const APP_INFO = getConfig("app") as YamlApp;
+  if (APP_INFO.public) {
+    app.register(fastifyStatic, {
+      root: path.join(__dirname, APP_INFO.public), // 静态文件目录
+      prefix: "/", // 访问前缀
+    });
+  }
 
   // 注册模板引擎
   app.register(fastifyView, {
@@ -58,12 +61,12 @@ const startServer = async () => {
   try {
     initServer();
 
-    const APP_INFO = getConfig("app") as ConfigApp;
+    const APP_INFO = getConfig("app") as YamlApp;
 
     logger.info(`正在启动服务，端口: ${APP_INFO.port}...`);
     const address = await app.listen({
-      port: APP_INFO.port,
-      host: APP_INFO.host,
+      port: APP_INFO.port ?? 5210,
+      host: APP_INFO.host ?? "0.0.0.0",
     });
     logger.info(`
       =========================================

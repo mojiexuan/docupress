@@ -1,39 +1,33 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { getConfig } from "../config/index.js";
-import { parseMd, parseYaml } from "../utils/index.js";
+import { parseMd, parseYaml, parsePagination } from "../utils/index.js";
 
 export const articleController = async (
   req: FastifyRequest,
-  reply: FastifyReply
+  reply: FastifyReply,
 ) => {
-  const APP_INFO = getConfig("app") as ConfigApp;
+  const APP_INFO = getConfig("app") as YamlApp;
   const article = (req.params as { article: string }).article;
 
   if (!article) {
     return reply.status(400).send({ error: "参数异常" });
   }
 
+  // 解析md，分离yaml
   let { data, content } = parseYaml(article);
 
-  if (APP_INFO.sidebar && data && data.sidebar) {
-    delete APP_INFO.sidebar;
-  }
+  data = { ...APP_INFO, ...data };
 
-  if (APP_INFO.sidebar && data && !data.sidebar) {
-    data.sidebar = APP_INFO.sidebar;
-  }
+  // 内容区
+  content = await parseMd(content, data.title, APP_INFO.outline);
 
-  content = await parseMd(
-    (data as PageData).title,
-    APP_INFO.outline,
-    content ? content : ""
-  );
+  // 获取页
+  const pagination = parsePagination(article);
+
   return reply.view("article", {
-    ...APP_INFO,
     ...data,
     content,
-    title: data?.title + APP_INFO.name,
+    title: data?.title ?? "" + APP_INFO.name ?? "",
     url: "/" + article,
-    time:data?.time ?? APP_INFO.time
   });
 };

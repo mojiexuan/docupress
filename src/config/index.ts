@@ -15,7 +15,7 @@ const configCache: Config = {
     name: "DocuPress",
     favicon: "/favicon.ico",
     description: "一个SEO友好的博客、文档及知识库管理工具",
-    tagline: "代码󠇗笔󠆐墨󠅱 心若󠇗星󠆅河󠅼 创意󠇘通󠆭灵󠆙",
+    slogan: "代码󠇗笔󠆐墨󠅱 心若󠇗星󠆅河󠅼 创意󠇘通󠆭灵󠆙",
     keywords:
       "DocuPress、码界轩、博客、文档、SEO、博客系统、文档系统、博客框架、文档框架、博客系统框架、文档系统框架",
     author: "陈佳宝, mail@chenjiabao.com",
@@ -67,7 +67,7 @@ function setConfigCache(config: Config) {
   configCache.app.favicon = config.app.favicon ?? configCache.app.favicon;
   configCache.app.description =
     config.app.description ?? configCache.app.description;
-  configCache.app.tagline = config.app.tagline ?? configCache.app.tagline;
+  configCache.app.slogan = config.app.slogan ?? configCache.app.slogan;
   configCache.app.keywords = config.app.keywords ?? configCache.app.keywords;
   configCache.app.author = config.app.author ?? configCache.app.author;
   configCache.app.host = config.app.host ?? configCache.app.host;

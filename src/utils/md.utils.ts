@@ -54,16 +54,18 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  */
 const addCustomContainer = (
   md: MarkdownIt,
-  container: { name: string; title: string }[]
+  container: { name: string; title: string }[],
 ) => {
   container.forEach((item) => {
     md.use(markdownitcontainer, item.name, {
       render: function (tokens: MarkdownItContainerTokenType[], idx: number) {
         const m = tokens[idx].info.split(" ");
         if (tokens[idx].nesting === 1) {
-          return `<div class="custom-container custom-container-${item.name
-            }"><div class="custom-container-title">${m.length > 2 ? md.utils.escapeHtml(m[2]) : item.title
-            }</div>\n`;
+          return `<div class="custom-container custom-container-${
+            item.name
+          }"><div class="custom-container-title">${
+            m.length > 2 ? md.utils.escapeHtml(m[2]) : item.title
+          }</div>\n`;
         } else {
           return "</div>\n";
         }
@@ -139,8 +141,9 @@ const md = MarkdownItAsync({
     titleRender: (tokens, idx) => {
       const token = tokens[idx];
       const content = token.content.trim();
-      return `<div class="markdown-alert-title">${alertTitleMap[content] || content
-        }</div>`;
+      return `<div class="markdown-alert-title">${
+        alertTitleMap[content] || content
+      }</div>`;
     },
   }) // GFM 风格的警告
   .use(markdownitsup) // 上标
@@ -200,8 +203,9 @@ md.use(markdownitcontainer, "details", {
   render: function (tokens: MarkdownItContainerTokenType[], idx: number) {
     const m = tokens[idx].info.split(" ");
     if (tokens[idx].nesting === 1) {
-      return `<details class="custom-container custom-container-details"><summary class="custom-container-title">${m.length > 2 ? md.utils.escapeHtml(m[2]) : "详情"
-        }</summary>\n`;
+      return `<details class="custom-container custom-container-details"><summary class="custom-container-title">${
+        m.length > 2 ? md.utils.escapeHtml(m[2]) : "详情"
+      }</summary>\n`;
     } else {
       return "</details>\n";
     }
@@ -216,29 +220,46 @@ md.linkify.set({ fuzzyEmail: false });
  * @param name 文件名称
  * @returns
  */
-const parseYaml = (name: string) => {
+const parseYaml = (name: string): { data?: YamlArticle; content?: string } => {
   try {
-    const APP_INFO = getConfig("app") as ConfigApp;
+    const APP_INFO = getConfig("app") as YamlApp;
     const text = fs.readFileSync(
       path.resolve(__dirname, ".." + APP_INFO.docs + "/" + name + ".md"),
-      "utf-8"
+      "utf-8",
     );
-    return matter(text);
+    return matter(text) as { data?: YamlArticle; content?: string };
   } catch (_err) {
     return {
-      data: null,
-      content: null,
+      data: undefined,
+      content: undefined,
     };
   }
 };
 
 /**
  * 解析markdown文本
- * @param text markdown文本
+ * @param content markdown文本
  */
-const parseMd = async (title: string, outline: ConfigOutline, text: string) => {
-  text = `<article class="article-content">${title ? `<h1>${title}</h1>` : ''}\n\n${text}\n\n<footer class="article-footer"><div class="article-info"></div><nav></nav></footer></article><div class="article-outline-content"><div class="article-outline-title">${outline.label}</div>\n\n[toc]\n\n</div>`;
-  return md.renderAsync(text);
+const parseMd = async (
+  content?: string,
+  title?: string,
+  outline?: YamlAppOutline,
+) => {
+  let o = "";
+  if (outline && outline.label) {
+    o = `<div class="article-outline-content"><div class="article-outline-title">${outline.label}</div>\n\n[toc]\n\n</div>`;
+  }
+  let t = "";
+  if (title) {
+    t = `<h1>${title}</h1>`;
+  }
+  const a = `<article class="article-content">${t}\n\n${content ?? ""}\n\n<footer class="article-footer"><div class="article-info"></div><nav></nav></footer></article>${o}`;
+  return md.renderAsync(a);
 };
 
-export { parseYaml, parseMd };
+/**
+ * 解析页
+ */
+const parsePagination = (name: string) => {};
+
+export { parseYaml, parseMd, parsePagination };
