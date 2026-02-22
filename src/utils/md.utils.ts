@@ -2,8 +2,6 @@
 
 import fs from "fs";
 import matter from "gray-matter";
-import path from "path";
-import { getConfig } from "../config/index.js";
 // import MarkdownIt from "markdown-it";
 import MarkdownItAsync, {
   MarkdownItAsync as MarkdownIt,
@@ -220,20 +218,17 @@ md.linkify.set({ fuzzyEmail: false });
  * @param name 文件名称
  * @returns
  */
-const parseYaml = (name: string): { data?: YamlArticle; content?: string } => {
+const parseYaml = (path: string): { yaml?: YamlArticle; content?: string } => {
   try {
-    const APP_INFO = getConfig("app") as YamlApp;
-    const text = fs.readFileSync(
-      path.resolve(__dirname, ".." + APP_INFO.docs + "/" + name + ".md"),
-      "utf-8",
-    );
-    return matter(text) as { data?: YamlArticle; content?: string };
-  } catch (_err) {
-    return {
-      data: undefined,
-      content: undefined,
-    };
-  }
+    if (fs.existsSync(path)) {
+      const text = fs.readFileSync(path, "utf-8");
+      return matter(text) as { yaml?: YamlArticle; content?: string };
+    }
+  } catch (_err) {}
+  return {
+    yaml: undefined,
+    content: undefined,
+  };
 };
 
 /**
@@ -265,7 +260,7 @@ const parsePagination = (link: string, sidebar?: YamlArticleSidebar[]) => {
     return undefined;
   }
   const side = sidebar.flatMap((s) => s.items ?? []);
-  const index = side.findIndex((s) => s.link === "/" + link);
+  const index = side.findIndex((s) => s.link === link);
   if (index === -1) {
     return undefined;
   }

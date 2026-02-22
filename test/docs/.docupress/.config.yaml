@@ -1,7 +1,7 @@
 app:
   name: "DocuPress"
   favicon: "/favicon.ico"
-  description: "一款SEO友好的博客、文档及知识库管理工具"
+  description: "一款SEO友好的博客、文档站点生成器"
   slogan: "代码󠇗笔󠆐墨󠅱 心若󠇗星󠆅河󠅼 创意󠇘通󠆭灵󠆙"
   keywords: "DocuPress、码界轩、博客、文档、SEO、博客系统、文档系统、博客框架、文档框架、博客系统框架、文档系统框架"
   author: "陈佳宝, mail@chenjiabao.com"
@@ -14,13 +14,15 @@ app:
       link: "/"
     - name: "lang"
       list:
-        - name: "zh-CN"
-          value: "中文"
-        - name: "en-US"
-          value: "English"
+        - name: "中文"
+          value: "zh-CN"
+          path: "/"
+        - name: "English"
+          value: "en-US"
+          path: "/en"
     - name: "theme"
     - name: "github"
-      link: "https://github.com/majiexuan"
+      link: "https://github.com/mojiexuan"
       blank: true
   menu:
     label: "菜单"

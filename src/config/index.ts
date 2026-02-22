@@ -1,16 +1,14 @@
 // src/config/index.ts
-import { readFileSync } from "fs";
-import path from "path";
+import { readFileSync, existsSync } from "fs";
 import { parse } from "yaml";
-import logger from "../logger.js";
 import { getNowDate } from "../utils/index.js";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import { getErrorMessage } from "../utils/error.utils.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// 配置缓存
+let configCache: Config | null = null;
 
-// 定义一个变量来缓存配置对象，初始值为 null
-const configCache: Config = {
+// 默认配置
+const defaultConfig: Config = {
   app: {
     name: "DocuPress",
     favicon: "/favicon.ico",
@@ -32,12 +30,12 @@ const configCache: Config = {
         name: "lang",
         list: [
           {
-            name: "zh-CN",
-            value: "中文",
+            name: "中文",
+            value: "zh-CN",
           },
           {
-            name: "en-US",
-            value: "English",
+            name: "English",
+            value: "en-US",
           },
         ],
       },
@@ -59,73 +57,48 @@ const configCache: Config = {
     time: getNowDate(),
   },
 };
-// 计时器
-let timer: NodeJS.Timeout;
 
+/**
+ * 设置缓存
+ * @param config 配置
+ */
 function setConfigCache(config: Config) {
-  configCache.app.name = config.app.name ?? configCache.app.name;
-  configCache.app.favicon = config.app.favicon ?? configCache.app.favicon;
-  configCache.app.description =
-    config.app.description ?? configCache.app.description;
-  configCache.app.slogan = config.app.slogan ?? configCache.app.slogan;
-  configCache.app.keywords = config.app.keywords ?? configCache.app.keywords;
-  configCache.app.author = config.app.author ?? configCache.app.author;
-  configCache.app.host = config.app.host ?? configCache.app.host;
-  configCache.app.port = config.app.port ?? configCache.app.port;
-  configCache.app.public = config.app.public ?? configCache.app.public;
-  configCache.app.docs = config.app.docs ?? configCache.app.docs;
-  configCache.app.operates = config.app.operates ?? configCache.app.operates;
-  configCache.app.menu = config.app.menu ?? configCache.app.menu;
-  configCache.app.outline = config.app.outline ?? configCache.app.outline;
-  configCache.app.time = config.app.time ?? configCache.app.time;
-  if (!config.app.time) {
-    getLastUpdateDate();
-  }
+  configCache = {
+    app: {
+      name: config.app.name ?? defaultConfig.app.name,
+      favicon: config.app.favicon ?? defaultConfig.app.favicon,
+      description: config.app.description ?? defaultConfig.app.description,
+      slogan: config.app.slogan ?? defaultConfig.app.slogan,
+      keywords: config.app.keywords ?? defaultConfig.app.keywords,
+      author: config.app.author ?? defaultConfig.app.author,
+      host: config.app.host ?? defaultConfig.app.host,
+      port: config.app.port ?? defaultConfig.app.port,
+      public: config.app.public ?? defaultConfig.app.public,
+      docs: config.app.docs ?? defaultConfig.app.docs,
+      operates: config.app.operates ?? defaultConfig.app.operates,
+      menu: config.app.menu ?? defaultConfig.app.menu,
+      outline: config.app.outline ?? defaultConfig.app.outline,
+      time: config.app.time ?? defaultConfig.app.time,
+    },
+  };
 }
 
 /**
- * 获取最后更新时间，每7天更新一次
- */
-const getLastUpdateDate = () => {
-  if (timer) {
-    return;
-  }
-  if (configCache) {
-    configCache.app.time = getNowDate();
-  }
-  timer = setInterval(
-    () => {
-      if (configCache) {
-        configCache.app.time = getNowDate();
-      }
-    },
-    1000 * 60 * 60 * 24 * 7,
-  );
-};
-
-/**
  * 加载配置
+ * @param configPath 配置文件路径，不传就返回缓存的或默认的配置
  */
-export const loadConfig = () => {
-  logger.info("Starting to load configuration file ..");
+export const loadConfig = (configPath?: string): Config => {
   try {
-    // 根据运行环境构造配置文件的路径
-    const yamlPath = path.resolve(__dirname, "../.config.yaml");
-    // 读取配置文件内容
-    const file = readFileSync(yamlPath, "utf8");
-    // 解析 YAML 文件内容为 JavaScript 对象
-    const parsedConfig = parse(file) as Config;
-    // 将解析后的配置对象缓存起来
-    setConfigCache(parsedConfig);
-    logger.info("Configuration file loading completed");
+    if (configPath && existsSync(configPath)) {
+      // 读取配置文件内容
+      const file = readFileSync(configPath, "utf8");
+      // 解析 YAML 文件内容为 JavaScript 对象
+      const parsedConfig = parse(file) as Config;
+      // 将解析后的配置对象缓存起来
+      setConfigCache(parsedConfig);
+    }
   } catch (error) {
-    // 如果读取或解析配置文件失败，则打印错误信息并退出程序
-    logger.error(`Failed to load the configuration file-${error}`);
-    process.exit(1);
+    console.error(`Error loading configuration file:`, getErrorMessage(error));
   }
-};
-
-// 读取配置
-export const getConfig = (type: keyof Config) => {
-  return configCache[type];
+  return configCache ?? defaultConfig;
 };

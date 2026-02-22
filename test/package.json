@@ -1,0 +1,23 @@
+{
+  "name": "docu-press",
+  "version": "1.0.0",
+  "description": "一款SEO友好的博客、文档站点生成器",
+  "keywords": [
+    "Docu",
+    "Press",
+    "DocuPress"
+  ],
+  "license": "MIT",
+  "author": "陈佳宝，mail@chenjiabao.com",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "docupress dev docs",
+    "docs:build": "docupress build docs",
+    "docs:preview": "docupress preview docs"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

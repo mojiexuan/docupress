@@ -30,6 +30,8 @@ interface YamlApp extends YamlBase {
   public?: string;
   // 文档，md文件放置目录
   docs?: string;
+  // 输出目录
+  outDir?: string;
   // 右上角操作
   operates?: YamlAppOperations[];
   // 菜单配置
