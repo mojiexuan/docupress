@@ -1,20 +1,17 @@
 import { readdir, stat } from "fs/promises";
-import { resolve, join, dirname, relative } from "path";
-import { fileURLToPath } from "url";
+import { resolve, join, relative } from "path";
 import { existsSync } from "fs";
 import { getErrorMessage } from "./error.utils";
-
-const _dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
  * 寻找工作目录
  */
 function findPwd(path: string = ""): string {
   // 拼接路径
-  let pwd = resolve(join(_dirname, path));
+  let pwd = resolve(process.cwd(), path);
   // 是否存在
   if (!existsSync(pwd)) {
-    return _dirname;
+    return process.cwd();
   }
   return pwd;
 }

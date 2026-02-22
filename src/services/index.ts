@@ -1,5 +1,13 @@
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 import { parseMd, parsePagination, parseYaml } from "../utils";
 import nunjucks from "nunjucks";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+nunjucks.configure(resolve(__dirname, "../views"), {
+  autoescape: false,
+  noCache: process.env.NODE_ENV === "development",
+});
 
 interface ParseResult extends YamlApp {
   content?: string;
@@ -36,7 +44,10 @@ async function parse(
  * 渲染
  */
 function render(data: ParseResult) {
-  return nunjucks.render("", data);
+  if (data.url && data.url === "/") {
+    return nunjucks.render("index.njk", data);
+  }
+  return nunjucks.render("article.njk", data);
 }
 
 export { parse, render };
