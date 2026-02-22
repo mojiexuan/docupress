@@ -10,7 +10,7 @@ export const articleController = async (
   const article = (req.params as { article: string }).article;
 
   if (!article) {
-    return reply.status(400).send({ error: "参数异常" });
+    return reply.status(400).send({ error: "Parameter exception" });
   }
 
   // 解析md，分离yaml
@@ -27,7 +27,6 @@ export const articleController = async (
   return reply.view("article", {
     ...data,
     content,
-    name: data.title ?? "" + ("-" + APP_INFO.name) ?? "",
     url: "/" + article,
     pagination,
   });

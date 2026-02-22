@@ -25,7 +25,7 @@ const initServer = () => {
   // 加载配置文件
   loadConfig();
 
-  logger.info("开始注册相关插件...");
+  logger.info("Start registering relevant plugins ..");
 
   app.register(errorHandlerPlugin);
 
@@ -53,7 +53,7 @@ const initServer = () => {
 
   app.register(userRouter, { prefix: "/" });
 
-  logger.info("插件注册成功");
+  logger.info("Plugin registration completed");
 };
 
 // 运行服务
@@ -63,15 +63,15 @@ const startServer = async () => {
 
     const APP_INFO = getConfig("app") as YamlApp;
 
-    logger.info(`正在启动服务，端口: ${APP_INFO.port}...`);
+    logger.info(`Starting service, port: ${APP_INFO.port}...`);
     const address = await app.listen({
       port: APP_INFO.port ?? 5210,
       host: APP_INFO.host ?? "0.0.0.0",
     });
     logger.info(`
       =========================================
-      ${APP_INFO.name} 服务运行中!
-      访问地址: ${address}
+      ${APP_INFO.name} Service is running!
+      Access address: ${address}
       =========================================
     `);
     return app;

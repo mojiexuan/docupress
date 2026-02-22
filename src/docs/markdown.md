@@ -3,19 +3,19 @@ title: "Markdown扩展"
 description: "DocuPress支持的Markdown扩展语法"
 time: "2026-02-19"
 sidebar:
-  - text: "简介"
+  - name: "简介"
     items:
-      - text: "什么是DocuPress？"
+      - name: "什么是DocuPress？"
         link: "/what"
-      - text: "快速开始"
+      - name: "快速开始"
         link: "/started"
-      - text: "记发布开源组件到Maven Central仓库"
+      - name: "记发布开源组件到Maven Central仓库"
         link: "/publish-maven-central-repo"
-  - text: "写作"
+  - name: "写作"
     items:
-      - text: "Markdown扩展"
+      - name: "Markdown扩展"
         link: "/markdown"
-  - text: "Api参考"
+  - name: "Api参考"
 ---
 
 ## Gray Matter

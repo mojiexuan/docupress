@@ -4,10 +4,10 @@ import path from "path";
 import { parse } from "yaml";
 import logger from "../logger.js";
 import { getNowDate } from "../utils/index.js";
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // 定义一个变量来缓存配置对象，初始值为 null
 const configCache: Config = {
@@ -93,18 +93,21 @@ const getLastUpdateDate = () => {
   if (configCache) {
     configCache.app.time = getNowDate();
   }
-  timer = setInterval(() => {
-    if (configCache) {
-      configCache.app.time = getNowDate();
-    }
-  }, 1000 * 60 * 60 * 24 * 7);
+  timer = setInterval(
+    () => {
+      if (configCache) {
+        configCache.app.time = getNowDate();
+      }
+    },
+    1000 * 60 * 60 * 24 * 7,
+  );
 };
 
 /**
  * 加载配置
  */
 export const loadConfig = () => {
-  logger.info("开始加载配置文件...");
+  logger.info("Starting to load configuration file ..");
   try {
     // 根据运行环境构造配置文件的路径
     const yamlPath = path.resolve(__dirname, "../.config.yaml");
@@ -114,10 +117,10 @@ export const loadConfig = () => {
     const parsedConfig = parse(file) as Config;
     // 将解析后的配置对象缓存起来
     setConfigCache(parsedConfig);
-    logger.info("配置文件加载成功");
+    logger.info("Configuration file loading completed");
   } catch (error) {
     // 如果读取或解析配置文件失败，则打印错误信息并退出程序
-    logger.error(`加载配置文件失败-${error}`);
+    logger.error(`Failed to load the configuration file-${error}`);
     process.exit(1);
   }
 };

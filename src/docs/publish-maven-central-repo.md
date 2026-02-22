@@ -1,19 +1,19 @@
 ---
 title: "记发布开源组件到Maven Central仓库"
 sidebar:
-    - text: "简介"
-      items:
-        - text: "什么是DocuPress？"
-          link: "/what"
-        - text: "快速开始"
-          link: "/started"
-        - text: "记发布开源组件到Maven Central仓库"
-          link: "/publish-maven-central-repo"
-    - text: "写作"
-      items:
-        - text: "Markdown扩展"
-          link: "/markdown"
-    - text: "Api参考"
+  - name: "简介"
+    items:
+      - name: "什么是DocuPress？"
+        link: "/what"
+      - name: "快速开始"
+        link: "/started"
+      - name: "记发布开源组件到Maven Central仓库"
+        link: "/publish-maven-central-repo"
+  - name: "写作"
+    items:
+      - name: "Markdown扩展"
+        link: "/markdown"
+  - name: "Api参考"
 ---
 
 ## 一、注册登录
