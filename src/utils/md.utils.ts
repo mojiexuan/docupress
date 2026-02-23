@@ -218,11 +218,12 @@ md.linkify.set({ fuzzyEmail: false });
  * @param name 文件名称
  * @returns
  */
-const parseYaml = (path: string): { yaml?: YamlArticle; content?: string } => {
+const parseYaml = (path: string): { yaml?: YamlData; content?: string } => {
   try {
     if (fs.existsSync(path)) {
       const text = fs.readFileSync(path, "utf-8");
-      return matter(text) as { yaml?: YamlArticle; content?: string };
+      const { data, content } = matter(text);
+      return { yaml: data as YamlData, content };
     }
   } catch (_err) {}
   return {

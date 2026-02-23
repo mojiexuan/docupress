@@ -163,6 +163,11 @@ interface YamlArticleSidebarItem {
   link?: string;
 }
 
+/**
+ * 最终数据集
+ */
+interface YamlData extends YamlApp, YamlIndex, YamlArticle {}
+
 interface ErrorHandlerOptions {
   // 是否在响应中暴露错误堆栈
   exposeStack?: boolean;

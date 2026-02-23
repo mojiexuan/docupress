@@ -28,16 +28,20 @@ async function parse(
 ): Promise<ParseResult> {
   // 解析md，分离yaml
   let { yaml, content } = parseYaml(input);
-  if (!yaml && !content) {
-    yaml = {};
-  }
+  yaml = yaml ?? {};
+  content = content ?? "";
   // 加载配置
-  let data = { ...config.app, ...yaml };
+  let data = { ...config.app, ...yaml, url: link };
+
+  if (link === "/") {
+    return { ...data };
+  }
+
   // 内容
   content = await parseMd(content ?? "", data.title, data.outline);
   // 获取页
   const pagination = parsePagination(link, data.sidebar);
-  return { ...data, content, pagination, url: link };
+  return { ...data, content, pagination };
 }
 
 /**

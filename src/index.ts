@@ -62,6 +62,7 @@ function build(path: string = "") {
       const renderStr = render(parsed);
       // 写入文件
       writeFileSync(map.output, renderStr, "utf-8");
+      console.log(`${map.link}: ${map.input} -> ${map.output}`);
     });
   });
 }
