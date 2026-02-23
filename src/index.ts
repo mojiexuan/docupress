@@ -1,6 +1,6 @@
 /// <reference path="./types/global.d.ts" />
 import { join, resolve } from "path";
-import { existsSync, mkdirSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, writeFileSync, rmSync } from "fs";
 import { getErrorMessage } from "./utils/error.utils";
 import { findPwd, getFilesMapping } from "./utils/file.utils";
 import { loadConfig } from "./config";
@@ -31,17 +31,27 @@ function build(path: string = "") {
   const appConfig = loadConfig(configPath);
   // 输出目录
   const outputDir = resolve(join(_docupress, "dist"));
-  if (!existsSync(outputDir)) {
+  if (existsSync(outputDir)) {
     try {
-      // 创建输出目录
-      mkdirSync(outputDir);
+      // 删除输出目录
+      rmSync(outputDir, { recursive: true, force: true });
     } catch (error) {
       console.error(
-        `Failed to create the output directory:`,
+        `Failed to delete the dist directory:`,
         getErrorMessage(error),
       );
       return;
     }
+  }
+  try {
+    // 创建输出目录
+    mkdirSync(outputDir);
+  } catch (error) {
+    console.error(
+      `Failed to create the output directory:`,
+      getErrorMessage(error),
+    );
+    return;
   }
   //
   getFilesMapping(pwd).then((maps) => {

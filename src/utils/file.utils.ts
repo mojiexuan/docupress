@@ -134,7 +134,12 @@ async function getFilesMapping(
     // 解析相对路径
     const relativePath = relative(dirPath, file);
     // 构建输出目录
-    const outputPath = join(dirPath, ".docupress", "dist", relativePath);
+    const outputPath = join(
+      dirPath,
+      ".docupress",
+      "dist",
+      relativePath.replace(".md", ".html"),
+    );
     // 访问链接
     let link = "/" + relativePath;
     // 移除 .md

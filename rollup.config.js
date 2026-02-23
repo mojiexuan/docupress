@@ -2,6 +2,7 @@ import { defineConfig } from "rollup";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
 import copy from "rollup-plugin-copy";
+import del from "rollup-plugin-delete";
 import { readFileSync } from "fs";
 
 const pkg = JSON.parse(readFileSync("./package.json", "utf-8"));
@@ -25,6 +26,7 @@ export default defineConfig([
       preserveModules: true,
     },
     plugins: [
+      del({ targets: "dist/esm/*", runOnce: true }),
       typescript({
         tsconfig: "./tsconfig.esm.json",
         declaration: true,
@@ -51,6 +53,7 @@ export default defineConfig([
       chunkFileNames: "[name].cjs",
     },
     plugins: [
+      del({ targets: "dist/cjs/*", runOnce: true }),
       typescript({
         tsconfig: "./tsconfig.cjs.json",
         declaration: true,

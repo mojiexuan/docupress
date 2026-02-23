@@ -31,7 +31,7 @@
     }
   },
   "bin": {
-      "docupress": "./dist/esm/cli.js"
+    "docupress": "./dist/esm/cli.js"
   },
   "scripts": {
     "build": "rollup -c",
@@ -80,13 +80,14 @@
     "yaml": "^2.7.1"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@types/markdown-it": "^14.1.2",
     "@types/markdown-it-attrs": "^4.1.3",
     "@types/node": "^22.15.16",
     "@types/nunjucks": "^3.2.6",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.2",
     "rollup": "^4.42.0",
-    "rollup-plugin-copy": "^3.5.0"
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-delete": "^3.0.2"
   }
 }
