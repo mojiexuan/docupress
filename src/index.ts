@@ -1,6 +1,8 @@
 /// <reference path="./types/global.d.ts" />
 import { join, resolve } from "path";
+import { createServer } from "http";
 import { existsSync, mkdirSync, writeFileSync, rmSync } from "fs";
+import sirv from "sirv";
 import { getErrorMessage } from "./utils/error.utils";
 import { findPwd, getFilesMapping } from "./utils/file.utils";
 import { loadConfig } from "./config";
@@ -85,6 +87,26 @@ function preview(path: string = "") {
   const pwd = findPwd(path);
   // .docupress目录
   const _docupress = resolve(join(pwd, ".docupress"));
+  // 输出目录
+  const distDir = resolve(join(_docupress, "dist"));
+  if (!existsSync(distDir)) {
+    console.error(
+      `The dist directory does not exist. Please run "docupress build docs" first.`,
+    );
+    return;
+  }
+  // 获取配置
+  const configPath = resolve(join(_docupress, ".config.yaml"));
+  const appConfig = loadConfig(configPath);
+  // 服务信息
+  const host = appConfig.app.host || "0.0.0.0";
+  const port = appConfig.app.port || 5210;
+  // 启动静态文件服务器
+  const handler = sirv(distDir, { single: true });
+  const server = createServer(handler);
+  server.listen(port, host, () => {
+    console.log(`Preview server running at http://localhost:${port}`);
+  });
 }
 
 export { build, dev, preview };
